@@ -290,6 +290,10 @@ export function ConfigPage() {
                         path = 'public/profile.png'
                         filename = 'profile.png'
                         publicPath = '/profile.png'
+                    } else if (target === 'user.title_image') {
+                        path = 'public/logo.png'
+                        filename = 'logo.png'
+                        publicPath = '/logo.png'
                     } else {
                         // 不处理其他图片类型
                         continue
@@ -416,6 +420,8 @@ export function ConfigPage() {
         }
     }
 
+    const currentTitleType = parsedConfig?.site?.title_type || parsedConfig?.site?.titleType || 'text'
+
     return (
         <div className="w-full max-w-4xl mx-auto my-12 font-sans">
             <Toaster
@@ -531,56 +537,57 @@ export function ConfigPage() {
                             <div className="max-w-3xl mx-auto space-y-10">
                                 {/* Icons */}
                                 <div className="grid grid-cols-2 gap-4 md:gap-12">
-                                    <div className="space-y-3">
-                                        <div className="text-xs font-medium text-base-content/70 ml-1">网站图标</div>
-                                        <div className="group relative flex justify-center p-4 md:p-8 bg-base-100 rounded-2xl md:rounded-3xl border border-base-200 shadow-sm hover:shadow-md transition-all duration-300">
-                                            <div className="w-16 h-16 md:w-24 md:h-24 rounded-xl md:rounded-2xl overflow-hidden bg-base-200 ring-4 ring-base-100 shadow-xl group-hover:scale-105 transition-transform duration-300">
-                                                <img src={parsedConfig?.site?.favicon || '/favicon.ico'} alt="Favicon" className="w-full h-full object-cover" />
-                                            </div>
-                                            <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-base-100/50 backdrop-blur-sm rounded-2xl md:rounded-3xl cursor-pointer" onClick={() => triggerImageUpload('site.favicon')}>
-                                                <button className="btn btn-circle btn-primary shadow-lg scale-90 group-hover:scale-100 transition-transform">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" /><polyline points="17 8 12 3 7 8" /><line x1="12" x2="12" y1="3" y2="15" /></svg>
-                                                </button>
-                                            </div>
-                                            {uploadingImage && uploadTarget === 'site.favicon' && (
-                                                <div className="absolute inset-0 flex items-center justify-center bg-base-100/80 rounded-2xl md:rounded-3xl z-10">
-                                                    <span className="loading loading-spinner loading-md text-primary"></span>
-                                                </div>
-                                            )}
-                                        </div>
-                                        <input
-                                            type="text"
-                                            className="input input-sm input-bordered w-full text-center text-xs rounded-full bg-base-100 shadow-sm focus:border-primary focus:ring-2 focus:ring-primary/20"
-                                            value={parsedConfig?.site?.favicon || ''}
-                                            onChange={e => updateConfigValue('site.favicon', e.target.value)}
-                                            placeholder="图标 URL"
-                                        />
-                                    </div>
-                                    <div className="space-y-3">
-                                        <div className="text-xs font-medium text-base-content/70 ml-1">用户头像</div>
-                                        <div className="group relative flex justify-center p-4 md:p-8 bg-base-100 rounded-2xl md:rounded-3xl border border-base-200 shadow-sm hover:shadow-md transition-all duration-300">
-                                            <div className="w-16 h-16 md:w-24 md:h-24 rounded-xl md:rounded-2xl overflow-hidden bg-base-200 ring-4 ring-base-100 shadow-xl group-hover:scale-105 transition-transform duration-300">
-                                                <img src={parsedConfig?.user?.avatar || '/avatar.png'} alt="Avatar" className="w-full h-full object-cover" />
-                                            </div>
-                                            <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-base-100/50 backdrop-blur-sm rounded-2xl md:rounded-3xl cursor-pointer" onClick={() => triggerImageUpload('user.avatar')}>
-                                                <button className="btn btn-circle btn-primary shadow-lg scale-90 group-hover:scale-100 transition-transform">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" /><polyline points="17 8 12 3 7 8" /><line x1="12" x2="12" y1="3" y2="15" /></svg>
-                                                </button>
-                                            </div>
-                                            {uploadingImage && uploadTarget === 'user.avatar' && (
-                                                <div className="absolute inset-0 flex items-center justify-center bg-base-100/80 rounded-2xl md:rounded-3xl z-10">
-                                                    <span className="loading loading-spinner loading-md text-primary"></span>
-                                                </div>
-                                            )}
-                                        </div>
-                                        <input
-                                            type="text"
-                                            className="input input-sm input-bordered w-full text-center text-xs rounded-full bg-base-100 shadow-sm focus:border-primary focus:ring-2 focus:ring-primary/20"
-                                            value={parsedConfig?.user?.avatar || ''}
-                                            onChange={e => updateConfigValue('user.avatar', e.target.value)}
-                                            placeholder="头像 URL"
-                                        />
-                                    </div>
+                                                    <div className="space-y-3">
+                                                        <div className="text-xs font-medium text-base-content/70 ml-1">网站图标</div>
+                                                        <div className="group relative flex justify-center p-4 md:p-8 bg-base-100 rounded-2xl md:rounded-3xl border border-base-200 shadow-sm hover:shadow-md transition-all duration-300">
+                                                            <div className="w-16 h-16 md:w-24 md:h-24 rounded-xl md:rounded-2xl overflow-hidden bg-base-200 ring-4 ring-base-100 shadow-xl group-hover:scale-105 transition-transform duration-300">
+                                                                <img src={parsedConfig?.site?.favicon || '/favicon.ico'} alt="Favicon" className="w-full h-full object-cover" />
+                                                            </div>
+                                                            <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-base-100/50 backdrop-blur-sm rounded-2xl md:rounded-3xl cursor-pointer" onClick={() => triggerImageUpload('site.favicon')}>
+                                                                <button className="btn btn-circle btn-primary shadow-lg scale-90 group-hover:scale-100 transition-transform">
+                                                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" /><polyline points="17 8 12 3 7 8" /><line x1="12" x2="12" y1="3" y2="15" /></svg>
+                                                                </button>
+                                                            </div>
+                                                            {uploadingImage && uploadTarget === 'site.favicon' && (
+                                                                <div className="absolute inset-0 flex items-center justify-center bg-base-100/80 rounded-2xl md:rounded-3xl z-10">
+                                                                    <span className="loading loading-spinner loading-md text-primary"></span>
+                                                                </div>
+                                                            )}
+                                                        </div>
+                                                        <input
+                                                            type="text"
+                                                            className="input input-sm input-bordered w-full text-center text-xs rounded-full bg-base-100 shadow-sm focus:border-primary focus:ring-2 focus:ring-primary/20"
+                                                            value={parsedConfig?.site?.favicon || ''}
+                                                            onChange={e => updateConfigValue('site.favicon', e.target.value)}
+                                                            placeholder="图标 URL"
+                                                        />
+                                                    </div>
+                                                    <div className="space-y-3">
+                                                        <div className="text-xs font-medium text-base-content/70 ml-1">用户头像</div>
+                                                        <div className="group relative flex justify-center p-4 md:p-8 bg-base-100 rounded-2xl md:rounded-3xl border border-base-200 shadow-sm hover:shadow-md transition-all duration-300">
+                                                            <div className="w-16 h-16 md:w-24 md:h-24 rounded-xl md:rounded-2xl overflow-hidden bg-base-200 ring-4 ring-base-100 shadow-xl group-hover:scale-105 transition-transform duration-300">
+                                                                <img src={parsedConfig?.user?.avatar || '/avatar.png'} alt="Avatar" className="w-full h-full object-cover" />
+                                                            </div>
+                                                            <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-base-100/50 backdrop-blur-sm rounded-2xl md:rounded-3xl cursor-pointer" onClick={() => triggerImageUpload('user.avatar')}>
+                                                                <button className="btn btn-circle btn-primary shadow-lg scale-90 group-hover:scale-100 transition-transform">
+                                                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" /><polyline points="17 8 12 3 7 8" /><line x1="12" x2="12" y1="3" y2="15" /></svg>
+                                                                </button>
+                                                            </div>
+                                                            {uploadingImage && uploadTarget === 'user.avatar' && (
+                                                                <div className="absolute inset-0 flex items-center justify-center bg-base-100/80 rounded-2xl md:rounded-3xl z-10">
+                                                                    <span className="loading loading-spinner loading-md text-primary"></span>
+                                                                </div>
+                                                            )}
+                                                        </div>
+                                                        <input
+                                                            type="text"
+                                                            className="input input-sm input-bordered w-full text-center text-xs rounded-full bg-base-100 shadow-sm focus:border-primary focus:ring-2 focus:ring-primary/20"
+                                                            value={parsedConfig?.user?.avatar || ''}
+                                                            onChange={e => updateConfigValue('user.avatar', e.target.value)}
+                                                            placeholder="头像 URL"
+                                                        />
+                                                    </div>
+                                                    
                                 </div>
 
                                 {/* User Info */}
@@ -607,30 +614,136 @@ export function ConfigPage() {
                                             value={parsedConfig?.user?.description || ''}
                                             onChange={e => updateConfigValue('user.description', e.target.value)} />
                                     </div>
+                                    {/* Social Buttons (moved here) */}
+                                    <div className="space-y-4">
+                                        <div className="text-sm font-medium text-base-content/70 ml-1">社交按钮</div>
+                                        <div className="card bg-base-100 shadow-sm border border-base-200 p-2 rounded-2xl">
+                                            <div className="space-y-2 p-2">
+                                                {(parsedConfig?.user?.sidebar?.social || []).map((item: any, index: number) => (
+                                                    <div key={index} className="flex items-center gap-3 group p-2 hover:bg-base-200/50 rounded-xl transition-colors">
+                                                        <div className="w-32">
+                                                            <CustomSelect
+                                                                value={SOCIAL_PRESETS.find(p => p.value === item.svg)?.value || 'ri:link'}
+                                                                onChange={val => handleSocialChange(index, 'svg', val)}
+                                                                options={SOCIAL_PRESETS}
+                                                            />
+                                                        </div>
+
+                                                        <input
+                                                            type="text"
+                                                            className="input input-sm input-bordered flex-1 bg-base-100 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all"
+                                                            placeholder="链接地址"
+                                                            value={item.href}
+                                                            onChange={e => handleSocialChange(index, 'href', e.target.value)}
+                                                        />
+
+                                                        <div className="join bg-base-200 rounded-lg p-1">
+                                                            <div className="w-8 h-6 flex items-center justify-center text-xs font-mono text-base-content/50">
+                                                                {index + 1}
+                                                            </div>
+                                                        </div>
+
+                                                        <div className="flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+                                                            <button onClick={() => moveSocial(index, 'up')} className="btn btn-xs btn-ghost btn-square" disabled={index === 0}>↑</button>
+                                                            <button onClick={() => moveSocial(index, 'down')} className="btn btn-xs btn-ghost btn-square" disabled={index === (parsedConfig?.user?.sidebar?.social?.length || 0) - 1}>↓</button>
+                                                            <button onClick={() => removeSocial(index)} className="btn btn-xs btn-ghost btn-square text-error bg-error/10 hover:bg-error hover:text-white">✕</button>
+                                                        </div>
+                                                    </div>
+                                                ))}
+                                            </div>
+                                            <div className="p-2">
+                                                <button onClick={addSocial} className="btn btn-outline btn-sm w-full border-dashed border-2 text-base-content/50 hover:text-primary hover:border-primary hover:bg-primary/5">
+                                                    + 添加按钮
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+
                                 </div>
 
                                 {/* Basic Info */}
                                 <div className="card bg-base-100 shadow-sm border border-base-200 p-6 rounded-2xl space-y-6">
-                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
-                                        <div className="form-control w-full">
-                                            <label className="label"><span className="label-text font-medium">站点标题</span></label>
-                                            <input type="text" className="input input-bordered w-full bg-base-100 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all"
-                                                value={parsedConfig?.site?.title || ''}
-                                                onChange={e => updateConfigValue('site.title', e.target.value)} />
-                                        </div>
-                                        <div className="form-control w-full">
-                                            <label className="label"><span className="label-text font-medium">浏览器标签</span></label>
-                                            <input type="text" className="input input-bordered w-full bg-base-100 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all"
-                                                value={parsedConfig?.site?.tab || ''}
-                                                onChange={e => updateConfigValue('site.tab', e.target.value)} />
-                                        </div>
-                                    </div>
+                                    <h3 className="font-bold text-lg text-primary border-b border-base-200 pb-2">站点信息</h3>
+                                    <div className="space-y-4">
+                                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 items-start">
+                                            {/* Left: Site image + upload */}
+                                            <div className="h-full flex flex-col justify-between">
+                                                <label className="label"><span className="label-text font-medium">站点标题图片（若选择图片显示）</span></label>
 
-                                    <div className="form-control w-full">
-                                        <label className="label"><span className="label-text font-medium">站点描述</span></label>
-                                        <textarea className="textarea textarea-bordered w-full h-24 bg-base-100 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all resize-none"
-                                            value={parsedConfig?.site?.description || ''}
-                                            onChange={e => updateConfigValue('site.description', e.target.value)} />
+                                                <div className="group relative flex justify-center p-4 md:p-8 bg-base-100 rounded-2xl md:rounded-3xl border border-base-200 shadow-sm hover:shadow-md transition-all duration-300 w-full">
+                                                    <div className="w-40 h-16 md:w-48 md:h-20 rounded-xl md:rounded-2xl overflow-hidden bg-base-200 ring-4 ring-base-100 shadow-xl group-hover:scale-105 transition-transform duration-300 mx-auto p-1 box-border">
+                                                        <img src={parsedConfig?.user?.title_image || parsedConfig?.user?.titleImage || '/logo.png'} alt="Site Title" className="w-full h-full object-contain object-center transform scale-125 transition-transform duration-300" />
+                                                    </div>
+                                                </div>
+
+                                                <div className="mt-2">
+                                                    <input
+                                                        type="text"
+                                                        className="input input-bordered h-10 w-full text-center rounded-full bg-base-100 shadow-sm focus:border-primary focus:ring-2 focus:ring-primary/20"
+                                                        value={parsedConfig?.user?.title_image || parsedConfig?.user?.titleImage || ''}
+                                                        onChange={e => updateConfigValue('user.title_image', e.target.value)}
+                                                        placeholder="标题图片 URL"
+                                                    />
+                                                </div>
+
+                                                <div className="flex justify-center">
+                                                    <button className="btn btn-sm btn-primary" onClick={() => triggerImageUpload('user.title_image')}>上传图片</button>
+                                                </div>
+                                            </div>
+
+                                            {/* Right: vertical box with title and tab + toggle at bottom */}
+                                            <div className="flex flex-col justify-between space-y-4 w-full md:w-auto p-2 md:p-4 h-full">
+                                                {/* normalize title type value for toggles */}
+                                                {/**/}
+                                                <div className="space-y-4">
+                                                    <div className="form-control w-full">
+                                                        <label className="label"><span className="label-text font-medium">站点标题</span></label>
+                                                        <input type="text" className="input input-bordered h-10 w-full bg-base-100 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all"
+                                                            value={parsedConfig?.site?.title || ''}
+                                                            onChange={e => updateConfigValue('site.title', e.target.value)} />
+                                                    </div>
+
+                                                    <div className="form-control w-full">
+                                                        <label className="label"><span className="label-text font-medium">浏览器标签</span></label>
+                                                        <input type="text" className="input input-bordered h-10 w-full bg-base-100 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all"
+                                                            value={parsedConfig?.site?.tab || ''}
+                                                            onChange={e => updateConfigValue('site.tab', e.target.value)} />
+                                                    </div>
+                                                </div>
+
+                                                <div>
+                                                    <label className="label"><span className="label-text text-sm">标题显示方式</span></label>
+                                                    <div className="flex items-center gap-6">
+                                                        <label className="flex items-center gap-2">
+                                                            <input
+                                                                type="checkbox"
+                                                                className="toggle toggle-md toggle-primary"
+                                                                checked={currentTitleType === 'image'}
+                                                                onChange={e => { updateConfigValue('site.title_type', e.target.checked ? 'image' : 'text'); updateConfigValue('site.titleType', e.target.checked ? 'image' : 'text') }}
+                                                            />
+                                                            <span className={`${(currentTitleType === 'image') ? 'text-primary font-medium' : 'text-base-content/70'}`}>图片</span>
+                                                        </label>
+
+                                                        <label className="flex items-center gap-2">
+                                                            <input
+                                                                type="checkbox"
+                                                                className="toggle toggle-md toggle-primary"
+                                                                checked={currentTitleType === 'text'}
+                                                                onChange={e => { updateConfigValue('site.title_type', e.target.checked ? 'text' : 'image'); updateConfigValue('site.titleType', e.target.checked ? 'text' : 'image') }}
+                                                            />
+                                                            <span className={`${(currentTitleType === 'text') ? 'text-primary font-medium' : 'text-base-content/70'}`}>文本</span>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div className="form-control w-full">
+                                            <label className="label"><span className="label-text font-medium">站点描述</span></label>
+                                            <textarea className="textarea textarea-bordered w-full h-24 bg-base-100 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all resize-none"
+                                                value={parsedConfig?.site?.description || ''}
+                                                onChange={e => updateConfigValue('site.description', e.target.value)} />
+                                        </div>
                                     </div>
 
                                     {/* ICP Info */}
@@ -648,51 +761,7 @@ export function ConfigPage() {
                                         </div>
                                     </div>
                                 </div>
-
-                                {/* Social Links */}
-                                <div className="space-y-4">
-                                    <div className="text-sm font-medium text-base-content/70 ml-1">社交按钮</div>
-                                    <div className="card bg-base-100 shadow-sm border border-base-200 p-2 rounded-2xl">
-                                        <div className="space-y-2 p-2">
-                                            {(parsedConfig?.user?.sidebar?.social || []).map((item: any, index: number) => (
-                                                <div key={index} className="flex items-center gap-3 group p-2 hover:bg-base-200/50 rounded-xl transition-colors">
-                                                    <div className="w-32">
-                                                        <CustomSelect
-                                                            value={SOCIAL_PRESETS.find(p => p.value === item.svg)?.value || 'ri:link'}
-                                                            onChange={val => handleSocialChange(index, 'svg', val)}
-                                                            options={SOCIAL_PRESETS}
-                                                        />
-                                                    </div>
-
-                                                    <input
-                                                        type="text"
-                                                        className="input input-sm input-bordered flex-1 bg-base-100 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all"
-                                                        placeholder="链接地址"
-                                                        value={item.href}
-                                                        onChange={e => handleSocialChange(index, 'href', e.target.value)}
-                                                    />
-
-                                                    <div className="join bg-base-200 rounded-lg p-1">
-                                                        <div className="w-8 h-6 flex items-center justify-center text-xs font-mono text-base-content/50">
-                                                            {index + 1}
-                                                        </div>
-                                                    </div>
-
-                                                    <div className="flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
-                                                        <button onClick={() => moveSocial(index, 'up')} className="btn btn-xs btn-ghost btn-square" disabled={index === 0}>↑</button>
-                                                        <button onClick={() => moveSocial(index, 'down')} className="btn btn-xs btn-ghost btn-square" disabled={index === (parsedConfig?.user?.sidebar?.social?.length || 0) - 1}>↓</button>
-                                                        <button onClick={() => removeSocial(index)} className="btn btn-xs btn-ghost btn-square text-error bg-error/10 hover:bg-error hover:text-white">✕</button>
-                                                    </div>
-                                                </div>
-                                            ))}
-                                        </div>
-                                        <div className="p-2">
-                                            <button onClick={addSocial} className="btn btn-outline btn-sm w-full border-dashed border-2 text-base-content/50 hover:text-primary hover:border-primary hover:bg-primary/5">
-                                                + 添加按钮
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
+                            
 
                                 {/* Features: Bangumi & TMDB */}
                                 <div className="space-y-6">

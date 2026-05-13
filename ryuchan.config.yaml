@@ -1,6 +1,7 @@
 site:
   tab: RyuChan
   title: RyuChan
+  title_type: image
   description: 🌸 轻盈、优雅、纯净 —— 用文字与图片记录生活与创意
   language: zh
   favicon: /favicon.png
@@ -142,6 +143,7 @@ user:
   description: Ciallo～(∠・ω<)⌒★
   site: https://hub.131714.xyz
   avatar: /profile.png
+  title_image: /logo.png
   sidebar:
     social:
       - href: https://github.com/kobaridev

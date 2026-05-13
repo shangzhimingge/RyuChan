@@ -4,7 +4,7 @@ import ThemeToggle from "./widgets/ThemeToggle.astro";
 import ThemeSelector from "./widgets/ThemeSelector.astro";
 import BannerSettings from "./widgets/BannerSettings.astro";
 import MobileSettings from "./widgets/MobileSettings.astro";
-import { SITE_TITLE, SITE_MENU, USER_AVATAR } from "../config";      
+import { SITE_TITLE, SITE_MENU, USER_AVATAR, SITE_TITLE_IMAGE, SITE_TITLE_TYPE } from "../config";      
       
 // Get current path to determine active link      
 const currentPath = Astro.url.pathname;      
@@ -35,20 +35,26 @@ const typedMenu = SITE_MENU as MenuItem[];
 <nav class="fixed top-0 left-0 right-0 z-50 hidden md:block transition-opacity duration-500 opacity-100 pointer-events-auto" id="navbar-desktop">      
   <div class="max-w-blog mx-auto px-4">      
     <!-- 透明背景，添加毛玻璃效果 -->      
-    <div id="navbar-bg" class="bg-base-100/80 backdrop-blur-xl border border-white/20 px-6 py-3 rounded-full shadow-2xl transition-colors duration-300">      
+    <div id="navbar-bg" class="bg-base-100/80 backdrop-blur-xl border border-white/20 px-6 py-0 rounded-full shadow-2xl transition-colors duration-300">
       <div class="flex items-center justify-between">      
 
-        <!-- 品牌标识 - 使用主题色 -->        
-        <a href="/" class="flex items-center space-x-2 hover:scale-105 transition-transform duration-300">        
-          <span class="text-3xl font-bold tracking-tight text-primary">{SITE_TITLE}</span>        
-        </a>      
+        <!-- 品牌标识 - 支持图片或文本 -->        
+        <a href="/" class="flex items-center hover:scale-105 transition-transform duration-300">
+          {SITE_TITLE_TYPE === 'image' && SITE_TITLE_IMAGE ? (
+            <div class="flex items-center justify-center mr-3 p-1 md:p-2 rounded-md bg-base-100/0" style="min-width:48px">
+              <img src={SITE_TITLE_IMAGE} alt={SITE_TITLE} class="h-12 md:h-14 w-auto object-contain my-0 flex-shrink-0" />
+            </div>
+          ) : (
+            <span class="text-3xl font-bold tracking-tight text-primary">{SITE_TITLE}</span>
+          )}
+        </a>
               
         <!-- 桌面端水平菜单 - 响应主题颜色 -->      
         <div class="flex items-center space-x-1">      
           {typedMenu.map((item) => (      
             item.subItems ? (      
               <div class="dropdown dropdown-hover">      
-                <div tabindex="0" role="button" class="nav-item btn btn-ghost text-xl md:text-3xl lg:text-xl font-bold px-4 py-2 rounded-xl hover:bg-white/10 transition-all duration-200 text-base-content dark:text-white flex items-center gap-2">      
+                <div tabindex="0" role="button" class="nav-item btn btn-ghost text-xl md:text-3xl lg:text-xl font-bold px-4 py-0 rounded-xl hover:bg-white/10 transition-all duration-200 text-base-content dark:text-white flex items-center gap-2">      
                   <Icon name={item.svg} class="w-5 h-5" />
                   <span>{item.text}</span>
                 </div>      
@@ -58,7 +64,7 @@ const typedMenu = SITE_MENU as MenuItem[];
                       <a       
                         href={subItem.href}       
                         target={subItem.target || "_self"}       
-                        class="px-4 py-2 hover:bg-base-200 rounded-xl text-base font-bold transition-all duration-200 flex items-center gap-2"      
+                        class="px-4 py-0 hover:bg-base-200 rounded-xl text-base font-bold transition-all duration-200 flex items-center gap-2"      
                       >      
                         <Icon name={subItem.svg} class="w-4 h-4" />
                         {subItem.text}      
@@ -68,10 +74,10 @@ const typedMenu = SITE_MENU as MenuItem[];
                 </ul>      
               </div>      
             ) : (      
-              <a       
+                <a       
                 href={item.href}       
                 target={item.target || "_self"}       
-                class="nav-item btn btn-ghost text-lg font-bold px-4 py-2 rounded-xl hover:bg-white/10 transition-all duration-200 text-base-content dark:text-white flex items-center gap-2"      
+                class="nav-item btn btn-ghost text-lg font-bold px-4 py-0 rounded-xl hover:bg-white/10 transition-all duration-200 text-base-content dark:text-white flex items-center gap-2"      
               >      
                 <Icon name={item.svg} class="w-5 h-5" />
                 {item.text}      

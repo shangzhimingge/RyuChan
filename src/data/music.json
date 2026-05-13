@@ -1,6 +1,22 @@
 {
     "songs": [
         {
+            "title": "渡口",
+            "artist": "蔡琴",
+            "cover": "https://163.hyc.moe?server=netease&type=pic&id=109951167871247765",
+            "url": "https://163.hyc.moe?server=netease&type=url&id=211277&br=320",
+            "lrc": "https://163.hyc.moe?server=netease&type=lrc&id=211277&format=lrc&trans=true",
+            "duration": "03:47"
+        },
+        {
+            "title": "We Are The World",
+            "artist": "Lionel Richie/Stevie Wonder/Paul Simon/Kenny Rogers/James Ingram/Tina Turner/Billy Joel/Michael Jackson/Diana Ross/Dionne Warwick/Willie Nelson/Al Jarreau/Bruce Springsteen/Kenny Loggins/Steve Perry/Daryl Hall/Huey Lewis/Cyndi Lauper/Kim Carnes/Bob Dylan/Ray Charles",
+            "cover": "https://163.hyc.moe?server=netease&type=pic&id=109951163122957256",
+            "url": "https://163.hyc.moe?server=netease&type=url&id=28493451&br=320",
+            "lrc": "https://163.hyc.moe?server=netease&type=lrc&id=28493451&format=lrc&trans=true",
+            "duration": "07:07"
+        },
+        {
             "title": "女孩",
             "artist": "韦礼安",
             "cover": "https://163.hyc.moe?server=netease&type=pic&id=109951168079643579",
@@ -1513,12 +1529,380 @@
             "duration": "04:40"
         },
         {
-            "title": "紅蓮華 -TV ver.-",
-            "artist": "LiSA",
-            "cover": "https://163.hyc.moe?server=netease&type=pic&id=109951165049698146",
-            "url": "https://163.hyc.moe?server=netease&type=url&id=1454058316&br=320",
-            "lrc": "https://163.hyc.moe?server=netease&type=lrc&id=1454058316&format=lrc&trans=true",
-            "duration": "01:32"
+            "title": "开始懂了",
+            "artist": "孙燕姿",
+            "cover": "https://163.hyc.moe?server=netease&type=pic&id=109951165549820772",
+            "url": "https://163.hyc.moe?server=netease&type=url&id=287719&br=320",
+            "lrc": "https://163.hyc.moe?server=netease&type=lrc&id=287719&format=lrc&trans=true",
+            "duration": "04:31"
+        },
+        {
+            "title": "我不难过",
+            "artist": "孙燕姿",
+            "cover": "https://163.hyc.moe?server=netease&type=pic&id=109951169724216323",
+            "url": "https://163.hyc.moe?server=netease&type=url&id=287398&br=320",
+            "lrc": "https://163.hyc.moe?server=netease&type=lrc&id=287398&format=lrc&trans=true",
+            "duration": "05:20"
+        },
+        {
+            "title": "雨天",
+            "artist": "孙燕姿",
+            "cover": "https://163.hyc.moe?server=netease&type=pic&id=109951166887388958",
+            "url": "https://163.hyc.moe?server=netease&type=url&id=287083&br=320",
+            "lrc": "https://163.hyc.moe?server=netease&type=lrc&id=287083&format=lrc&trans=true",
+            "duration": "04:01"
+        },
+        {
+            "title": "半句再见",
+            "artist": "孙燕姿",
+            "cover": "https://163.hyc.moe?server=netease&type=pic&id=109951166155142333",
+            "url": "https://163.hyc.moe?server=netease&type=url&id=548556869&br=320",
+            "lrc": "https://163.hyc.moe?server=netease&type=lrc&id=548556869&format=lrc&trans=true",
+            "duration": "04:02"
+        },
+        {
+            "title": "天黑黑",
+            "artist": "孙燕姿",
+            "cover": "https://163.hyc.moe?server=netease&type=pic&id=109951166191897217",
+            "url": "https://163.hyc.moe?server=netease&type=url&id=287749&br=320",
+            "lrc": "https://163.hyc.moe?server=netease&type=lrc&id=287749&format=lrc&trans=true",
+            "duration": "03:56"
+        },
+        {
+            "title": "眼泪成诗",
+            "artist": "孙燕姿",
+            "cover": "https://163.hyc.moe?server=netease&type=pic&id=109951166887388958",
+            "url": "https://163.hyc.moe?server=netease&type=url&id=287173&br=320",
+            "lrc": "https://163.hyc.moe?server=netease&type=lrc&id=287173&format=lrc&trans=true",
+            "duration": "03:41"
+        },
+        {
+            "title": "原来你什么都不要",
+            "artist": "孙燕姿",
+            "cover": "https://163.hyc.moe?server=netease&type=pic&id=109951169717932170",
+            "url": "https://163.hyc.moe?server=netease&type=url&id=287575&br=320",
+            "lrc": "https://163.hyc.moe?server=netease&type=lrc&id=287575&format=lrc&trans=true",
+            "duration": "03:43"
+        },
+        {
+            "title": "第一天",
+            "artist": "孙燕姿",
+            "cover": "https://163.hyc.moe?server=netease&type=pic&id=109951168311119114",
+            "url": "https://163.hyc.moe?server=netease&type=url&id=287248&br=320",
+            "lrc": "https://163.hyc.moe?server=netease&type=lrc&id=287248&format=lrc&trans=true",
+            "duration": "04:13"
+        },
+        {
+            "title": "绿光",
+            "artist": "孙燕姿",
+            "cover": "https://163.hyc.moe?server=netease&type=pic&id=109951166887388958",
+            "url": "https://163.hyc.moe?server=netease&type=url&id=287221&br=320",
+            "lrc": "https://163.hyc.moe?server=netease&type=lrc&id=287221&format=lrc&trans=true",
+            "duration": "03:11"
+        },
+        {
+            "title": "当冬夜渐暖",
+            "artist": "孙燕姿",
+            "cover": "https://163.hyc.moe?server=netease&type=pic&id=109951165992337446",
+            "url": "https://163.hyc.moe?server=netease&type=url&id=286959&br=320",
+            "lrc": "https://163.hyc.moe?server=netease&type=lrc&id=286959&format=lrc&trans=true",
+            "duration": "04:47"
+        },
+        {
+            "title": "180度",
+            "artist": "孙燕姿",
+            "cover": "https://163.hyc.moe?server=netease&type=pic&id=109951165992337446",
+            "url": "https://163.hyc.moe?server=netease&type=url&id=286966&br=320",
+            "lrc": "https://163.hyc.moe?server=netease&type=lrc&id=286966&format=lrc&trans=true",
+            "duration": "05:03"
+        },
+        {
+            "title": "愚人的国度",
+            "artist": "孙燕姿",
+            "cover": "https://163.hyc.moe?server=netease&type=pic&id=109951165992337446",
+            "url": "https://163.hyc.moe?server=netease&type=url&id=286970&br=320",
+            "lrc": "https://163.hyc.moe?server=netease&type=lrc&id=286970&format=lrc&trans=true",
+            "duration": "04:08"
+        },
+        {
+            "title": "克卜勒",
+            "artist": "孙燕姿",
+            "cover": "https://163.hyc.moe?server=netease&type=pic&id=109951163115291601",
+            "url": "https://163.hyc.moe?server=netease&type=url&id=28196001&br=320",
+            "lrc": "https://163.hyc.moe?server=netease&type=lrc&id=28196001&format=lrc&trans=true",
+            "duration": "04:09"
+        },
+        {
+            "title": "漩涡",
+            "artist": "孙燕姿",
+            "cover": "https://163.hyc.moe?server=netease&type=pic&id=109951169829283327",
+            "url": "https://163.hyc.moe?server=netease&type=url&id=287071&br=320",
+            "lrc": "https://163.hyc.moe?server=netease&type=lrc&id=287071&format=lrc&trans=true",
+            "duration": "04:51"
+        },
+        {
+            "title": "坏天气",
+            "artist": "孙燕姿",
+            "cover": "https://163.hyc.moe?server=netease&type=pic&id=109951165549820772",
+            "url": "https://163.hyc.moe?server=netease&type=url&id=287717&br=320",
+            "lrc": "https://163.hyc.moe?server=netease&type=lrc&id=287717&format=lrc&trans=true",
+            "duration": "04:30"
+        },
+        {
+            "title": "Honey Honey",
+            "artist": "孙燕姿",
+            "cover": "https://163.hyc.moe?server=netease&type=pic&id=109951168311119114",
+            "url": "https://163.hyc.moe?server=netease&type=url&id=287251&br=320",
+            "lrc": "https://163.hyc.moe?server=netease&type=lrc&id=287251&format=lrc&trans=true",
+            "duration": "04:24"
+        },
+        {
+            "title": "隐形人",
+            "artist": "孙燕姿",
+            "cover": "https://163.hyc.moe?server=netease&type=pic&id=109951168311119114",
+            "url": "https://163.hyc.moe?server=netease&type=url&id=287244&br=320",
+            "lrc": "https://163.hyc.moe?server=netease&type=lrc&id=287244&format=lrc&trans=true",
+            "duration": "04:36"
+        },
+        {
+            "title": "需要你",
+            "artist": "孙燕姿",
+            "cover": "https://163.hyc.moe?server=netease&type=pic&id=109951169829283327",
+            "url": "https://163.hyc.moe?server=netease&type=url&id=287073&br=320",
+            "lrc": "https://163.hyc.moe?server=netease&type=lrc&id=287073&format=lrc&trans=true",
+            "duration": "04:08"
+        },
+        {
+            "title": "同类",
+            "artist": "孙燕姿",
+            "cover": "https://163.hyc.moe?server=netease&type=pic&id=109951166890613011",
+            "url": "https://163.hyc.moe?server=netease&type=url&id=287287&br=320",
+            "lrc": "https://163.hyc.moe?server=netease&type=lrc&id=287287&format=lrc&trans=true",
+            "duration": "03:31"
+        },
+        {
+            "title": "日落",
+            "artist": "孙燕姿",
+            "cover": "https://163.hyc.moe?server=netease&type=pic&id=109951170378435887",
+            "url": "https://163.hyc.moe?server=netease&type=url&id=2666095018&br=320",
+            "lrc": "https://163.hyc.moe?server=netease&type=lrc&id=2666095018&format=lrc&trans=true",
+            "duration": "04:09"
+        },
+        {
+            "title": "我也很想他",
+            "artist": "孙燕姿",
+            "cover": "https://163.hyc.moe?server=netease&type=pic&id=109951166890613011",
+            "url": "https://163.hyc.moe?server=netease&type=url&id=287280&br=320",
+            "lrc": "https://163.hyc.moe?server=netease&type=lrc&id=287280&format=lrc&trans=true",
+            "duration": "04:17"
+        },
+        {
+            "title": "The Moment",
+            "artist": "孙燕姿",
+            "cover": "https://163.hyc.moe?server=netease&type=pic&id=109951169717940503",
+            "url": "https://163.hyc.moe?server=netease&type=url&id=287318&br=320",
+            "lrc": "https://163.hyc.moe?server=netease&type=lrc&id=287318&format=lrc&trans=true",
+            "duration": "04:13"
+        },
+        {
+            "title": "风衣",
+            "artist": "孙燕姿",
+            "cover": "https://163.hyc.moe?server=netease&type=pic&id=18357446138140955",
+            "url": "https://163.hyc.moe?server=netease&type=url&id=516657213&br=320",
+            "lrc": "https://163.hyc.moe?server=netease&type=lrc&id=516657213&format=lrc&trans=true",
+            "duration": "04:02"
+        },
+        {
+            "title": "尚好的青春",
+            "artist": "孙燕姿",
+            "cover": "https://163.hyc.moe?server=netease&type=pic&id=109951163115291601",
+            "url": "https://163.hyc.moe?server=netease&type=url&id=28283346&br=320",
+            "lrc": "https://163.hyc.moe?server=netease&type=lrc&id=28283346&format=lrc&trans=true",
+            "duration": "04:24"
+        },
+        {
+            "title": "飞瀑而下",
+            "artist": "孙燕姿",
+            "cover": "https://163.hyc.moe?server=netease&type=pic&id=109951172792823028",
+            "url": "https://163.hyc.moe?server=netease&type=url&id=3352859087&br=320",
+            "lrc": "https://163.hyc.moe?server=netease&type=lrc&id=3352859087&format=lrc&trans=true",
+            "duration": "04:51"
+        },
+        {
+            "title": "温柔 #MaydayBlue20th",
+            "artist": "五月天/孙燕姿",
+            "cover": "https://163.hyc.moe?server=netease&type=pic&id=109951168165043075",
+            "url": "https://163.hyc.moe?server=netease&type=url&id=1415642779&br=320",
+            "lrc": "https://163.hyc.moe?server=netease&type=lrc&id=1415642779&format=lrc&trans=true",
+            "duration": "04:31"
+        },
+        {
+            "title": "安宁",
+            "artist": "孙燕姿",
+            "cover": "https://163.hyc.moe?server=netease&type=pic&id=109951169829283327",
+            "url": "https://163.hyc.moe?server=netease&type=url&id=287065&br=320",
+            "lrc": "https://163.hyc.moe?server=netease&type=lrc&id=287065&format=lrc&trans=true",
+            "duration": "03:18"
+        },
+        {
+            "title": "逃亡",
+            "artist": "孙燕姿",
+            "cover": "https://163.hyc.moe?server=netease&type=pic&id=109951169717938522",
+            "url": "https://163.hyc.moe?server=netease&type=url&id=287617&br=320",
+            "lrc": "https://163.hyc.moe?server=netease&type=lrc&id=287617&format=lrc&trans=true",
+            "duration": "04:45"
+        },
+        {
+            "title": "渴",
+            "artist": "孙燕姿",
+            "cover": "https://163.hyc.moe?server=netease&type=pic&id=109951163115291601",
+            "url": "https://163.hyc.moe?server=netease&type=url&id=28283344&br=320",
+            "lrc": "https://163.hyc.moe?server=netease&type=lrc&id=28283344&format=lrc&trans=true",
+            "duration": "04:42"
+        },
+        {
+            "title": "手牵手",
+            "artist": "王力宏/陶喆/蔡琴/江蕙/苏芮/庾澄庆/张惠妹/顺子/动力火车/张清芳/周华健/张信哲/伍思凯/张宇/周杰伦/李玟/吴宗宪/陶晶莹/林慧萍/蔡依林/许茹芸/萧亚轩/孙燕姿/徐若瑄/彭佳慧/信乐团/游鸿明/范逸臣/迪克牛仔/李心洁/S.H.E/周渝民/朱孝天/Energy/可米小子/B.A.D/黄立成&麻吉/Tension/林志炫/罗志祥/欧汉声/光良/品冠/万芳/温岚/黄立行/王心凌/杨丞琳/范玮琪/潘玮柏/丁文琪/林晓培/袁惟仁/张惠春/康康/黄韵玲/黄嘉千/许慧欣/路嘉欣/萧潇/江美琪/Lisa Djaati",
+            "cover": "https://163.hyc.moe?server=netease&type=pic&id=109951171843410925",
+            "url": "https://163.hyc.moe?server=netease&type=url&id=5268423&br=320",
+            "lrc": "https://163.hyc.moe?server=netease&type=lrc&id=5268423&format=lrc&trans=true",
+            "duration": "05:42"
+        },
+        {
+            "title": "我要的幸福",
+            "artist": "孙燕姿",
+            "cover": "https://163.hyc.moe?server=netease&type=pic&id=109951165549820772",
+            "url": "https://163.hyc.moe?server=netease&type=url&id=287716&br=320",
+            "lrc": "https://163.hyc.moe?server=netease&type=lrc&id=287716&format=lrc&trans=true",
+            "duration": "03:35"
+        },
+        {
+            "title": "我的爱",
+            "artist": "孙燕姿",
+            "cover": "https://163.hyc.moe?server=netease&type=pic&id=109951166890613011",
+            "url": "https://163.hyc.moe?server=netease&type=url&id=287274&br=320",
+            "lrc": "https://163.hyc.moe?server=netease&type=lrc&id=287274&format=lrc&trans=true",
+            "duration": "04:24"
+        },
+        {
+            "title": "极美",
+            "artist": "孙燕姿",
+            "cover": "https://163.hyc.moe?server=netease&type=pic&id=18357446138140955",
+            "url": "https://163.hyc.moe?server=netease&type=url&id=516657215&br=320",
+            "lrc": "https://163.hyc.moe?server=netease&type=lrc&id=516657215&format=lrc&trans=true",
+            "duration": "03:31"
+        },
+        {
+            "title": "直来直往",
+            "artist": "孙燕姿",
+            "cover": "https://163.hyc.moe?server=netease&type=pic&id=109951169721354185",
+            "url": "https://163.hyc.moe?server=netease&type=url&id=287524&br=320",
+            "lrc": "https://163.hyc.moe?server=netease&type=lrc&id=287524&format=lrc&trans=true",
+            "duration": "03:33"
+        },
+        {
+            "title": "不是真的爱我",
+            "artist": "孙燕姿",
+            "cover": "https://163.hyc.moe?server=netease&type=pic&id=109951169717938522",
+            "url": "https://163.hyc.moe?server=netease&type=url&id=287620&br=320",
+            "lrc": "https://163.hyc.moe?server=netease&type=lrc&id=287620&format=lrc&trans=true",
+            "duration": "04:01"
+        },
+        {
+            "title": "飘着",
+            "artist": "孙燕姿",
+            "cover": "https://163.hyc.moe?server=netease&type=pic&id=109951169829283327",
+            "url": "https://163.hyc.moe?server=netease&type=url&id=287067&br=320",
+            "lrc": "https://163.hyc.moe?server=netease&type=lrc&id=287067&format=lrc&trans=true",
+            "duration": "04:09"
+        },
+        {
+            "title": "咕叽咕叽",
+            "artist": "孙燕姿",
+            "cover": "https://163.hyc.moe?server=netease&type=pic&id=109951169829283327",
+            "url": "https://163.hyc.moe?server=netease&type=url&id=287061&br=320",
+            "lrc": "https://163.hyc.moe?server=netease&type=lrc&id=287061&format=lrc&trans=true",
+            "duration": "04:32"
+        },
+        {
+            "title": "爱情字典",
+            "artist": "孙燕姿",
+            "cover": "https://163.hyc.moe?server=netease&type=pic&id=109951169717938522",
+            "url": "https://163.hyc.moe?server=netease&type=url&id=287637&br=320",
+            "lrc": "https://163.hyc.moe?server=netease&type=lrc&id=287637&format=lrc&trans=true",
+            "duration": "03:49"
+        },
+        {
+            "title": "在,也不见",
+            "artist": "孙燕姿",
+            "cover": "https://163.hyc.moe?server=netease&type=pic&id=109951165992343715",
+            "url": "https://163.hyc.moe?server=netease&type=url&id=408212737&br=320",
+            "lrc": "https://163.hyc.moe?server=netease&type=lrc&id=408212737&format=lrc&trans=true",
+            "duration": "03:53"
+        },
+        {
+            "title": "银泰",
+            "artist": "孙燕姿",
+            "cover": "https://163.hyc.moe?server=netease&type=pic&id=109951163115291601",
+            "url": "https://163.hyc.moe?server=netease&type=url&id=28283347&br=320",
+            "lrc": "https://163.hyc.moe?server=netease&type=lrc&id=28283347&format=lrc&trans=true",
+            "duration": "04:23"
+        },
+        {
+            "title": "样子",
+            "artist": "孙燕姿",
+            "cover": "https://163.hyc.moe?server=netease&type=pic&id=109951172661523753",
+            "url": "https://163.hyc.moe?server=netease&type=url&id=2117877676&br=320",
+            "lrc": "https://163.hyc.moe?server=netease&type=lrc&id=2117877676&format=lrc&trans=true",
+            "duration": "04:06"
+        },
+        {
+            "title": "雨还是不停地落下",
+            "artist": "孙燕姿",
+            "cover": "https://163.hyc.moe?server=netease&type=pic&id=109951163115291601",
+            "url": "https://163.hyc.moe?server=netease&type=url&id=28283351&br=320",
+            "lrc": "https://163.hyc.moe?server=netease&type=lrc&id=28283351&format=lrc&trans=true",
+            "duration": "04:51"
+        },
+        {
+            "title": "Tonight, I feel close to you",
+            "artist": "倉木麻衣/孙燕姿",
+            "cover": "https://163.hyc.moe?server=netease&type=pic&id=109951169490437243",
+            "url": "https://163.hyc.moe?server=netease&type=url&id=22790789&br=320",
+            "lrc": "https://163.hyc.moe?server=netease&type=lrc&id=22790789&format=lrc&trans=true",
+            "duration": "04:05"
+        },
+        {
+            "title": "爱情证书",
+            "artist": "孙燕姿",
+            "cover": "https://163.hyc.moe?server=netease&type=pic&id=109951166191897217",
+            "url": "https://163.hyc.moe?server=netease&type=url&id=287747&br=320",
+            "lrc": "https://163.hyc.moe?server=netease&type=lrc&id=287747&format=lrc&trans=true",
+            "duration": "04:15"
+        },
+        {
+            "title": "神奇",
+            "artist": "孙燕姿",
+            "cover": "https://163.hyc.moe?server=netease&type=pic&id=109951169724216323",
+            "url": "https://163.hyc.moe?server=netease&type=url&id=287384&br=320",
+            "lrc": "https://163.hyc.moe?server=netease&type=lrc&id=287384&format=lrc&trans=true",
+            "duration": "04:22"
+        },
+        {
+            "title": "眼神",
+            "artist": "孙燕姿",
+            "cover": "https://163.hyc.moe?server=netease&type=pic&id=109951169717940503",
+            "url": "https://163.hyc.moe?server=netease&type=url&id=287363&br=320",
+            "lrc": "https://163.hyc.moe?server=netease&type=lrc&id=287363&format=lrc&trans=true",
+            "duration": "03:30"
+        },
+        {
+            "title": "原点",
+            "artist": "孙燕姿/蔡健雅",
+            "cover": "https://163.hyc.moe?server=netease&type=pic&id=109951166191908812",
+            "url": "https://163.hyc.moe?server=netease&type=url&id=287025&br=320",
+            "lrc": "https://163.hyc.moe?server=netease&type=lrc&id=287025&format=lrc&trans=true",
+            "duration": "04:07"
         },
         {
             "title": "crossing field",
@@ -1882,14 +2266,31 @@
         }
     ],
     "playlistCounts": {
-        "17933567326": 46,
+        "17933567326": 48,
         "17956985703": 50,
         "17957187425": 50,
         "17957136689": 48,
-        "17957179525": 50
+        "17957661244": 50,
+        "17957179525": 49
     },
     "playlistSongs": {
         "17933567326": [
+            {
+                "title": "渡口",
+                "artist": "蔡琴",
+                "cover": "https://163.hyc.moe?server=netease&type=pic&id=109951167871247765",
+                "url": "https://163.hyc.moe?server=netease&type=url&id=211277&br=320",
+                "lrc": "https://163.hyc.moe?server=netease&type=lrc&id=211277&format=lrc&trans=true",
+                "duration": "03:47"
+            },
+            {
+                "title": "We Are The World",
+                "artist": "Lionel Richie/Stevie Wonder/Paul Simon/Kenny Rogers/James Ingram/Tina Turner/Billy Joel/Michael Jackson/Diana Ross/Dionne Warwick/Willie Nelson/Al Jarreau/Bruce Springsteen/Kenny Loggins/Steve Perry/Daryl Hall/Huey Lewis/Cyndi Lauper/Kim Carnes/Bob Dylan/Ray Charles",
+                "cover": "https://163.hyc.moe?server=netease&type=pic&id=109951163122957256",
+                "url": "https://163.hyc.moe?server=netease&type=url&id=28493451&br=320",
+                "lrc": "https://163.hyc.moe?server=netease&type=lrc&id=28493451&format=lrc&trans=true",
+                "duration": "07:07"
+            },
             {
                 "title": "女孩",
                 "artist": "韦礼安",
@@ -3449,6 +3850,408 @@
                 "duration": "04:40"
             }
         ],
+        "17957661244": [
+            {
+                "title": "我怀念的",
+                "artist": "孙燕姿",
+                "cover": "https://163.hyc.moe?server=netease&type=pic&id=109951169829283327",
+                "url": "https://163.hyc.moe?server=netease&type=url&id=287063&br=320",
+                "lrc": "https://163.hyc.moe?server=netease&type=lrc&id=287063&format=lrc&trans=true",
+                "duration": "04:49"
+            },
+            {
+                "title": "开始懂了",
+                "artist": "孙燕姿",
+                "cover": "https://163.hyc.moe?server=netease&type=pic&id=109951165549820772",
+                "url": "https://163.hyc.moe?server=netease&type=url&id=287719&br=320",
+                "lrc": "https://163.hyc.moe?server=netease&type=lrc&id=287719&format=lrc&trans=true",
+                "duration": "04:31"
+            },
+            {
+                "title": "我不难过",
+                "artist": "孙燕姿",
+                "cover": "https://163.hyc.moe?server=netease&type=pic&id=109951169724216323",
+                "url": "https://163.hyc.moe?server=netease&type=url&id=287398&br=320",
+                "lrc": "https://163.hyc.moe?server=netease&type=lrc&id=287398&format=lrc&trans=true",
+                "duration": "05:20"
+            },
+            {
+                "title": "雨天",
+                "artist": "孙燕姿",
+                "cover": "https://163.hyc.moe?server=netease&type=pic&id=109951166887388958",
+                "url": "https://163.hyc.moe?server=netease&type=url&id=287083&br=320",
+                "lrc": "https://163.hyc.moe?server=netease&type=lrc&id=287083&format=lrc&trans=true",
+                "duration": "04:01"
+            },
+            {
+                "title": "半句再见",
+                "artist": "孙燕姿",
+                "cover": "https://163.hyc.moe?server=netease&type=pic&id=109951166155142333",
+                "url": "https://163.hyc.moe?server=netease&type=url&id=548556869&br=320",
+                "lrc": "https://163.hyc.moe?server=netease&type=lrc&id=548556869&format=lrc&trans=true",
+                "duration": "04:02"
+            },
+            {
+                "title": "遇见",
+                "artist": "孙燕姿",
+                "cover": "https://163.hyc.moe?server=netease&type=pic&id=17687843556430013",
+                "url": "https://163.hyc.moe?server=netease&type=url&id=454828887&br=320",
+                "lrc": "https://163.hyc.moe?server=netease&type=lrc&id=454828887&format=lrc&trans=true",
+                "duration": "03:29"
+            },
+            {
+                "title": "逆光",
+                "artist": "孙燕姿",
+                "cover": "https://163.hyc.moe?server=netease&type=pic&id=109951169829283327",
+                "url": "https://163.hyc.moe?server=netease&type=url&id=287057&br=320",
+                "lrc": "https://163.hyc.moe?server=netease&type=lrc&id=287057&format=lrc&trans=true",
+                "duration": "04:54"
+            },
+            {
+                "title": "天黑黑",
+                "artist": "孙燕姿",
+                "cover": "https://163.hyc.moe?server=netease&type=pic&id=109951166191897217",
+                "url": "https://163.hyc.moe?server=netease&type=url&id=287749&br=320",
+                "lrc": "https://163.hyc.moe?server=netease&type=lrc&id=287749&format=lrc&trans=true",
+                "duration": "03:56"
+            },
+            {
+                "title": "眼泪成诗",
+                "artist": "孙燕姿",
+                "cover": "https://163.hyc.moe?server=netease&type=pic&id=109951166887388958",
+                "url": "https://163.hyc.moe?server=netease&type=url&id=287173&br=320",
+                "lrc": "https://163.hyc.moe?server=netease&type=lrc&id=287173&format=lrc&trans=true",
+                "duration": "03:41"
+            },
+            {
+                "title": "原来你什么都不要",
+                "artist": "孙燕姿",
+                "cover": "https://163.hyc.moe?server=netease&type=pic&id=109951169717932170",
+                "url": "https://163.hyc.moe?server=netease&type=url&id=287575&br=320",
+                "lrc": "https://163.hyc.moe?server=netease&type=lrc&id=287575&format=lrc&trans=true",
+                "duration": "03:43"
+            },
+            {
+                "title": "第一天",
+                "artist": "孙燕姿",
+                "cover": "https://163.hyc.moe?server=netease&type=pic&id=109951168311119114",
+                "url": "https://163.hyc.moe?server=netease&type=url&id=287248&br=320",
+                "lrc": "https://163.hyc.moe?server=netease&type=lrc&id=287248&format=lrc&trans=true",
+                "duration": "04:13"
+            },
+            {
+                "title": "绿光",
+                "artist": "孙燕姿",
+                "cover": "https://163.hyc.moe?server=netease&type=pic&id=109951166887388958",
+                "url": "https://163.hyc.moe?server=netease&type=url&id=287221&br=320",
+                "lrc": "https://163.hyc.moe?server=netease&type=lrc&id=287221&format=lrc&trans=true",
+                "duration": "03:11"
+            },
+            {
+                "title": "当冬夜渐暖",
+                "artist": "孙燕姿",
+                "cover": "https://163.hyc.moe?server=netease&type=pic&id=109951165992337446",
+                "url": "https://163.hyc.moe?server=netease&type=url&id=286959&br=320",
+                "lrc": "https://163.hyc.moe?server=netease&type=lrc&id=286959&format=lrc&trans=true",
+                "duration": "04:47"
+            },
+            {
+                "title": "180度",
+                "artist": "孙燕姿",
+                "cover": "https://163.hyc.moe?server=netease&type=pic&id=109951165992337446",
+                "url": "https://163.hyc.moe?server=netease&type=url&id=286966&br=320",
+                "lrc": "https://163.hyc.moe?server=netease&type=lrc&id=286966&format=lrc&trans=true",
+                "duration": "05:03"
+            },
+            {
+                "title": "愚人的国度",
+                "artist": "孙燕姿",
+                "cover": "https://163.hyc.moe?server=netease&type=pic&id=109951165992337446",
+                "url": "https://163.hyc.moe?server=netease&type=url&id=286970&br=320",
+                "lrc": "https://163.hyc.moe?server=netease&type=lrc&id=286970&format=lrc&trans=true",
+                "duration": "04:08"
+            },
+            {
+                "title": "克卜勒",
+                "artist": "孙燕姿",
+                "cover": "https://163.hyc.moe?server=netease&type=pic&id=109951163115291601",
+                "url": "https://163.hyc.moe?server=netease&type=url&id=28196001&br=320",
+                "lrc": "https://163.hyc.moe?server=netease&type=lrc&id=28196001&format=lrc&trans=true",
+                "duration": "04:09"
+            },
+            {
+                "title": "漩涡",
+                "artist": "孙燕姿",
+                "cover": "https://163.hyc.moe?server=netease&type=pic&id=109951169829283327",
+                "url": "https://163.hyc.moe?server=netease&type=url&id=287071&br=320",
+                "lrc": "https://163.hyc.moe?server=netease&type=lrc&id=287071&format=lrc&trans=true",
+                "duration": "04:51"
+            },
+            {
+                "title": "坏天气",
+                "artist": "孙燕姿",
+                "cover": "https://163.hyc.moe?server=netease&type=pic&id=109951165549820772",
+                "url": "https://163.hyc.moe?server=netease&type=url&id=287717&br=320",
+                "lrc": "https://163.hyc.moe?server=netease&type=lrc&id=287717&format=lrc&trans=true",
+                "duration": "04:30"
+            },
+            {
+                "title": "Honey Honey",
+                "artist": "孙燕姿",
+                "cover": "https://163.hyc.moe?server=netease&type=pic&id=109951168311119114",
+                "url": "https://163.hyc.moe?server=netease&type=url&id=287251&br=320",
+                "lrc": "https://163.hyc.moe?server=netease&type=lrc&id=287251&format=lrc&trans=true",
+                "duration": "04:24"
+            },
+            {
+                "title": "隐形人",
+                "artist": "孙燕姿",
+                "cover": "https://163.hyc.moe?server=netease&type=pic&id=109951168311119114",
+                "url": "https://163.hyc.moe?server=netease&type=url&id=287244&br=320",
+                "lrc": "https://163.hyc.moe?server=netease&type=lrc&id=287244&format=lrc&trans=true",
+                "duration": "04:36"
+            },
+            {
+                "title": "需要你",
+                "artist": "孙燕姿",
+                "cover": "https://163.hyc.moe?server=netease&type=pic&id=109951169829283327",
+                "url": "https://163.hyc.moe?server=netease&type=url&id=287073&br=320",
+                "lrc": "https://163.hyc.moe?server=netease&type=lrc&id=287073&format=lrc&trans=true",
+                "duration": "04:08"
+            },
+            {
+                "title": "同类",
+                "artist": "孙燕姿",
+                "cover": "https://163.hyc.moe?server=netease&type=pic&id=109951166890613011",
+                "url": "https://163.hyc.moe?server=netease&type=url&id=287287&br=320",
+                "lrc": "https://163.hyc.moe?server=netease&type=lrc&id=287287&format=lrc&trans=true",
+                "duration": "03:31"
+            },
+            {
+                "title": "日落",
+                "artist": "孙燕姿",
+                "cover": "https://163.hyc.moe?server=netease&type=pic&id=109951170378435887",
+                "url": "https://163.hyc.moe?server=netease&type=url&id=2666095018&br=320",
+                "lrc": "https://163.hyc.moe?server=netease&type=lrc&id=2666095018&format=lrc&trans=true",
+                "duration": "04:09"
+            },
+            {
+                "title": "我也很想他",
+                "artist": "孙燕姿",
+                "cover": "https://163.hyc.moe?server=netease&type=pic&id=109951166890613011",
+                "url": "https://163.hyc.moe?server=netease&type=url&id=287280&br=320",
+                "lrc": "https://163.hyc.moe?server=netease&type=lrc&id=287280&format=lrc&trans=true",
+                "duration": "04:17"
+            },
+            {
+                "title": "The Moment",
+                "artist": "孙燕姿",
+                "cover": "https://163.hyc.moe?server=netease&type=pic&id=109951169717940503",
+                "url": "https://163.hyc.moe?server=netease&type=url&id=287318&br=320",
+                "lrc": "https://163.hyc.moe?server=netease&type=lrc&id=287318&format=lrc&trans=true",
+                "duration": "04:13"
+            },
+            {
+                "title": "风衣",
+                "artist": "孙燕姿",
+                "cover": "https://163.hyc.moe?server=netease&type=pic&id=18357446138140955",
+                "url": "https://163.hyc.moe?server=netease&type=url&id=516657213&br=320",
+                "lrc": "https://163.hyc.moe?server=netease&type=lrc&id=516657213&format=lrc&trans=true",
+                "duration": "04:02"
+            },
+            {
+                "title": "尚好的青春",
+                "artist": "孙燕姿",
+                "cover": "https://163.hyc.moe?server=netease&type=pic&id=109951163115291601",
+                "url": "https://163.hyc.moe?server=netease&type=url&id=28283346&br=320",
+                "lrc": "https://163.hyc.moe?server=netease&type=lrc&id=28283346&format=lrc&trans=true",
+                "duration": "04:24"
+            },
+            {
+                "title": "飞瀑而下",
+                "artist": "孙燕姿",
+                "cover": "https://163.hyc.moe?server=netease&type=pic&id=109951172792823028",
+                "url": "https://163.hyc.moe?server=netease&type=url&id=3352859087&br=320",
+                "lrc": "https://163.hyc.moe?server=netease&type=lrc&id=3352859087&format=lrc&trans=true",
+                "duration": "04:51"
+            },
+            {
+                "title": "温柔 #MaydayBlue20th",
+                "artist": "五月天/孙燕姿",
+                "cover": "https://163.hyc.moe?server=netease&type=pic&id=109951168165043075",
+                "url": "https://163.hyc.moe?server=netease&type=url&id=1415642779&br=320",
+                "lrc": "https://163.hyc.moe?server=netease&type=lrc&id=1415642779&format=lrc&trans=true",
+                "duration": "04:31"
+            },
+            {
+                "title": "安宁",
+                "artist": "孙燕姿",
+                "cover": "https://163.hyc.moe?server=netease&type=pic&id=109951169829283327",
+                "url": "https://163.hyc.moe?server=netease&type=url&id=287065&br=320",
+                "lrc": "https://163.hyc.moe?server=netease&type=lrc&id=287065&format=lrc&trans=true",
+                "duration": "03:18"
+            },
+            {
+                "title": "逃亡",
+                "artist": "孙燕姿",
+                "cover": "https://163.hyc.moe?server=netease&type=pic&id=109951169717938522",
+                "url": "https://163.hyc.moe?server=netease&type=url&id=287617&br=320",
+                "lrc": "https://163.hyc.moe?server=netease&type=lrc&id=287617&format=lrc&trans=true",
+                "duration": "04:45"
+            },
+            {
+                "title": "渴",
+                "artist": "孙燕姿",
+                "cover": "https://163.hyc.moe?server=netease&type=pic&id=109951163115291601",
+                "url": "https://163.hyc.moe?server=netease&type=url&id=28283344&br=320",
+                "lrc": "https://163.hyc.moe?server=netease&type=lrc&id=28283344&format=lrc&trans=true",
+                "duration": "04:42"
+            },
+            {
+                "title": "手牵手",
+                "artist": "王力宏/陶喆/蔡琴/江蕙/苏芮/庾澄庆/张惠妹/顺子/动力火车/张清芳/周华健/张信哲/伍思凯/张宇/周杰伦/李玟/吴宗宪/陶晶莹/林慧萍/蔡依林/许茹芸/萧亚轩/孙燕姿/徐若瑄/彭佳慧/信乐团/游鸿明/范逸臣/迪克牛仔/李心洁/S.H.E/周渝民/朱孝天/Energy/可米小子/B.A.D/黄立成&麻吉/Tension/林志炫/罗志祥/欧汉声/光良/品冠/万芳/温岚/黄立行/王心凌/杨丞琳/范玮琪/潘玮柏/丁文琪/林晓培/袁惟仁/张惠春/康康/黄韵玲/黄嘉千/许慧欣/路嘉欣/萧潇/江美琪/Lisa Djaati",
+                "cover": "https://163.hyc.moe?server=netease&type=pic&id=109951171843410925",
+                "url": "https://163.hyc.moe?server=netease&type=url&id=5268423&br=320",
+                "lrc": "https://163.hyc.moe?server=netease&type=lrc&id=5268423&format=lrc&trans=true",
+                "duration": "05:42"
+            },
+            {
+                "title": "我要的幸福",
+                "artist": "孙燕姿",
+                "cover": "https://163.hyc.moe?server=netease&type=pic&id=109951165549820772",
+                "url": "https://163.hyc.moe?server=netease&type=url&id=287716&br=320",
+                "lrc": "https://163.hyc.moe?server=netease&type=lrc&id=287716&format=lrc&trans=true",
+                "duration": "03:35"
+            },
+            {
+                "title": "我的爱",
+                "artist": "孙燕姿",
+                "cover": "https://163.hyc.moe?server=netease&type=pic&id=109951166890613011",
+                "url": "https://163.hyc.moe?server=netease&type=url&id=287274&br=320",
+                "lrc": "https://163.hyc.moe?server=netease&type=lrc&id=287274&format=lrc&trans=true",
+                "duration": "04:24"
+            },
+            {
+                "title": "极美",
+                "artist": "孙燕姿",
+                "cover": "https://163.hyc.moe?server=netease&type=pic&id=18357446138140955",
+                "url": "https://163.hyc.moe?server=netease&type=url&id=516657215&br=320",
+                "lrc": "https://163.hyc.moe?server=netease&type=lrc&id=516657215&format=lrc&trans=true",
+                "duration": "03:31"
+            },
+            {
+                "title": "直来直往",
+                "artist": "孙燕姿",
+                "cover": "https://163.hyc.moe?server=netease&type=pic&id=109951169721354185",
+                "url": "https://163.hyc.moe?server=netease&type=url&id=287524&br=320",
+                "lrc": "https://163.hyc.moe?server=netease&type=lrc&id=287524&format=lrc&trans=true",
+                "duration": "03:33"
+            },
+            {
+                "title": "不是真的爱我",
+                "artist": "孙燕姿",
+                "cover": "https://163.hyc.moe?server=netease&type=pic&id=109951169717938522",
+                "url": "https://163.hyc.moe?server=netease&type=url&id=287620&br=320",
+                "lrc": "https://163.hyc.moe?server=netease&type=lrc&id=287620&format=lrc&trans=true",
+                "duration": "04:01"
+            },
+            {
+                "title": "飘着",
+                "artist": "孙燕姿",
+                "cover": "https://163.hyc.moe?server=netease&type=pic&id=109951169829283327",
+                "url": "https://163.hyc.moe?server=netease&type=url&id=287067&br=320",
+                "lrc": "https://163.hyc.moe?server=netease&type=lrc&id=287067&format=lrc&trans=true",
+                "duration": "04:09"
+            },
+            {
+                "title": "咕叽咕叽",
+                "artist": "孙燕姿",
+                "cover": "https://163.hyc.moe?server=netease&type=pic&id=109951169829283327",
+                "url": "https://163.hyc.moe?server=netease&type=url&id=287061&br=320",
+                "lrc": "https://163.hyc.moe?server=netease&type=lrc&id=287061&format=lrc&trans=true",
+                "duration": "04:32"
+            },
+            {
+                "title": "爱情字典",
+                "artist": "孙燕姿",
+                "cover": "https://163.hyc.moe?server=netease&type=pic&id=109951169717938522",
+                "url": "https://163.hyc.moe?server=netease&type=url&id=287637&br=320",
+                "lrc": "https://163.hyc.moe?server=netease&type=lrc&id=287637&format=lrc&trans=true",
+                "duration": "03:49"
+            },
+            {
+                "title": "在,也不见",
+                "artist": "孙燕姿",
+                "cover": "https://163.hyc.moe?server=netease&type=pic&id=109951165992343715",
+                "url": "https://163.hyc.moe?server=netease&type=url&id=408212737&br=320",
+                "lrc": "https://163.hyc.moe?server=netease&type=lrc&id=408212737&format=lrc&trans=true",
+                "duration": "03:53"
+            },
+            {
+                "title": "银泰",
+                "artist": "孙燕姿",
+                "cover": "https://163.hyc.moe?server=netease&type=pic&id=109951163115291601",
+                "url": "https://163.hyc.moe?server=netease&type=url&id=28283347&br=320",
+                "lrc": "https://163.hyc.moe?server=netease&type=lrc&id=28283347&format=lrc&trans=true",
+                "duration": "04:23"
+            },
+            {
+                "title": "样子",
+                "artist": "孙燕姿",
+                "cover": "https://163.hyc.moe?server=netease&type=pic&id=109951172661523753",
+                "url": "https://163.hyc.moe?server=netease&type=url&id=2117877676&br=320",
+                "lrc": "https://163.hyc.moe?server=netease&type=lrc&id=2117877676&format=lrc&trans=true",
+                "duration": "04:06"
+            },
+            {
+                "title": "雨还是不停地落下",
+                "artist": "孙燕姿",
+                "cover": "https://163.hyc.moe?server=netease&type=pic&id=109951163115291601",
+                "url": "https://163.hyc.moe?server=netease&type=url&id=28283351&br=320",
+                "lrc": "https://163.hyc.moe?server=netease&type=lrc&id=28283351&format=lrc&trans=true",
+                "duration": "04:51"
+            },
+            {
+                "title": "Tonight, I feel close to you",
+                "artist": "倉木麻衣/孙燕姿",
+                "cover": "https://163.hyc.moe?server=netease&type=pic&id=109951169490437243",
+                "url": "https://163.hyc.moe?server=netease&type=url&id=22790789&br=320",
+                "lrc": "https://163.hyc.moe?server=netease&type=lrc&id=22790789&format=lrc&trans=true",
+                "duration": "04:05"
+            },
+            {
+                "title": "爱情证书",
+                "artist": "孙燕姿",
+                "cover": "https://163.hyc.moe?server=netease&type=pic&id=109951166191897217",
+                "url": "https://163.hyc.moe?server=netease&type=url&id=287747&br=320",
+                "lrc": "https://163.hyc.moe?server=netease&type=lrc&id=287747&format=lrc&trans=true",
+                "duration": "04:15"
+            },
+            {
+                "title": "神奇",
+                "artist": "孙燕姿",
+                "cover": "https://163.hyc.moe?server=netease&type=pic&id=109951169724216323",
+                "url": "https://163.hyc.moe?server=netease&type=url&id=287384&br=320",
+                "lrc": "https://163.hyc.moe?server=netease&type=lrc&id=287384&format=lrc&trans=true",
+                "duration": "04:22"
+            },
+            {
+                "title": "眼神",
+                "artist": "孙燕姿",
+                "cover": "https://163.hyc.moe?server=netease&type=pic&id=109951169717940503",
+                "url": "https://163.hyc.moe?server=netease&type=url&id=287363&br=320",
+                "lrc": "https://163.hyc.moe?server=netease&type=lrc&id=287363&format=lrc&trans=true",
+                "duration": "03:30"
+            },
+            {
+                "title": "原点",
+                "artist": "孙燕姿/蔡健雅",
+                "cover": "https://163.hyc.moe?server=netease&type=pic&id=109951166191908812",
+                "url": "https://163.hyc.moe?server=netease&type=url&id=287025&br=320",
+                "lrc": "https://163.hyc.moe?server=netease&type=lrc&id=287025&format=lrc&trans=true",
+                "duration": "04:07"
+            }
+        ],
         "17957179525": [
             {
                 "title": "紅蓮華",
@@ -3457,14 +4260,6 @@
                 "url": "https://163.hyc.moe?server=netease&type=url&id=1375305989&br=320",
                 "lrc": "https://163.hyc.moe?server=netease&type=lrc&id=1375305989&format=lrc&trans=true",
                 "duration": "03:56"
-            },
-            {
-                "title": "紅蓮華 -TV ver.-",
-                "artist": "LiSA",
-                "cover": "https://163.hyc.moe?server=netease&type=pic&id=109951165049698146",
-                "url": "https://163.hyc.moe?server=netease&type=url&id=1454058316&br=320",
-                "lrc": "https://163.hyc.moe?server=netease&type=lrc&id=1454058316&format=lrc&trans=true",
-                "duration": "01:32"
             },
             {
                 "title": "crossing field",

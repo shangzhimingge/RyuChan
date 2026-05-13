@@ -82,6 +82,8 @@ export interface GithubConfig {
 export interface SiteConfig {
   tab: string;
   title: string;
+  title_type?: 'text' | 'image';
+  titleType?: 'text' | 'image';
   description: string;
   language: string;
   favicon: string;
@@ -118,6 +120,8 @@ export interface UserConfig {
   description?: string;
   site: string;
   avatar: string;
+  title_image?: string;
+  titleImage?: string;
   sidebar: {
     social: SocialIcon[];
   };

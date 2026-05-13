@@ -16,6 +16,10 @@ const translationsConfig = yaml.load(fs.readFileSync(translationsPath, "utf8")) 
 // 网站基本信息
 export const SITE_TAB = config.site.tab;
 export const SITE_TITLE = config.site.title;
+// 站点标题展示类型：'text' | 'image'（默认 text）
+export const SITE_TITLE_TYPE = config.site.title_type || config.site.titleType || 'text';
+// 可选的站点标题图片（现在保存在 user 下，便于与用户信息放在一起）
+export const SITE_TITLE_IMAGE = config.user?.title_image || config.user?.titleImage || '';
 export const SITE_DESCRIPTION = config.site.description;
 export const SITE_LANGUAGE = config.site.language;
 export const SITE_FAVICON = config.site.favicon;
