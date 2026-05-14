@@ -176,7 +176,7 @@ user:
         svg: ri:telegram-line
 comments:
   enable: true
-  type: giscus
+  type: twikoo
   giscus:
     repo: kobaridev/gsc
     repoId: R_kgDOPTM-mA
