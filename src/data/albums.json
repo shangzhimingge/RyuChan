@@ -2,77 +2,111 @@
   {
     "id": "4f7a2b1c",
     "date": "2024-05-20",
-    "event": "城市漫步",
-    "title": "上海外滩",
-    "description": "霓虹闪烁，灯火辉煌，感受魔都的魅力。",
-    "icon": "🌃",
+    "event": "新世纪福音战士",
+    "title": "明日香头像",
+    "description": "明日香头像收集",
+    "icon": "🌟",
     "photos": [
       {
-        "src": "/image/image5.webp",
-        "variant": "4x5",
-        "title": "外滩夜景",
-        "description": "东方明珠闪耀夜空。"
-      },
-      {
-        "src": "/image/image1.jpg",
+        "src": "https://img.131714.xyz/file/blog/Albums/%E6%98%8E%E6%97%A5%E9%A6%99/s9akpRBI.png",
         "variant": "1x1",
-        "title": "陆家嘴天际线",
-        "description": "现代化的摩天大楼群。"
+        "title": "Asuka01",
+        "description": "One"
       },
       {
-        "src": "/image/image2.jpg",
-        "variant": "4x3",
-        "title": "黄浦江游船",
-        "description": "夜晚乘船游览黄浦江。"
+        "src": "https://img.131714.xyz/file/blog/Albums/%E6%98%8E%E6%97%A5%E9%A6%99/a6zcpbxK.png",
+        "variant": "1x1",
+        "title": "Asuka02",
+        "description": "Two"
+      },
+      {
+        "src": "https://img.131714.xyz/file/blog/Albums/%E6%98%8E%E6%97%A5%E9%A6%99/MPtJV0dP.png",
+        "variant": "1x1",
+        "title": "Asuka03",
+        "description": "Three"
+      },
+      {
+        "src": "https://img.131714.xyz/file/blog/Albums/%E6%98%8E%E6%97%A5%E9%A6%99/hPdtnO6w.png",
+        "variant": "1x1",
+        "title": "Asuka04",
+        "description": "Four"
+      },
+      {
+        "src": "https://img.131714.xyz/file/blog/Albums/%E6%98%8E%E6%97%A5%E9%A6%99/quY1G94a.png",
+        "variant": "1x1",
+        "title": "Asuka05",
+        "description": "Five"
+      },
+      {
+        "src": "https://img.131714.xyz/file/blog/Albums/%E6%98%8E%E6%97%A5%E9%A6%99/azySD1LG.png",
+        "variant": "1x1",
+        "title": "Asuka06",
+        "description": "Six"
+      },
+      {
+        "src": "https://img.131714.xyz/file/blog/Albums/%E6%98%8E%E6%97%A5%E9%A6%99/pFBlu1J4.png",
+        "variant": "1x1",
+        "title": "Asuka07",
+        "description": "Seven"
       }
     ]
   },
   {
     "id": "8e3d6f9a",
     "date": "2024-07-15",
-    "event": "夏日旅行",
-    "title": "青岛海滨",
-    "description": "海风轻拂，浪花拍岸，享受美好的夏日时光。",
-    "icon": "🌊",
+    "event": "电锯人",
+    "title": "蕾塞头像",
+    "description": "蕾塞头像收集",
+    "icon": "💥",
     "photos": [
       {
-        "src": "/image/image1.jpg",
-        "variant": "4x5",
-        "title": "海边日落",
-        "description": "夕阳西下，金色的阳光洒在海面上。"
-      },
-      {
-        "src": "/image/image2.jpg",
-        "variant": "4x5",
-        "title": "沙滩漫步",
-        "description": "赤脚走在细软的沙滩上。"
-      },
-      {
-        "src": "/image/image3.png",
+        "src": "https://img.131714.xyz/file/blog/Albums/%E8%95%BE%E5%A1%9E/ACPZpnhV.png",
         "variant": "1x1",
-        "title": "海鲜大餐",
-        "description": "新鲜的海鲜，美味无比。"
+        "title": "Reze01",
+        "description": "One"
       },
       {
-        "src": "/image/image4.jpg",
-        "variant": "4x3",
-        "title": "灯塔远眺",
-        "description": "古老的灯塔，守护着这片海域。"
-      },
-      {
-        "src": "/image/albums/夏日旅行-4-1778848989560.jpg",
+        "src": "https://img.131714.xyz/file/blog/Albums/%E8%95%BE%E5%A1%9E/Xl16Hugp.png",
         "variant": "1x1",
-        "title": "2"
+        "title": "Reze02",
+        "description": "Two"
+      },
+      {
+        "src": "https://img.131714.xyz/file/blog/Albums/%E8%95%BE%E5%A1%9E/S1bQntz7.png",
+        "variant": "1x1",
+        "title": "Reze03",
+        "description": "Three"
+      },
+      {
+        "src": "https://img.131714.xyz/file/blog/Albums/%E8%95%BE%E5%A1%9E/mEcySA90.png",
+        "variant": "1x1",
+        "title": "Reze04",
+        "description": "Four"
+      },
+      {
+        "src": "https://img.131714.xyz/file/blog/Albums/%E8%95%BE%E5%A1%9E/E0s2XTG3.png",
+        "variant": "1x1",
+        "title": "Reze05",
+        "description": "Five"
+      },
+      {
+        "src": "https://img.131714.xyz/file/blog/Albums/%E8%95%BE%E5%A1%9E/8LrckBWX.png",
+        "variant": "1x1",
+        "title": "Reze06",
+        "description": "Six"
+      },
+      {
+        "src": "https://img.131714.xyz/file/blog/Albums/%E8%95%BE%E5%A1%9E/ugQ6XHS7.png",
+        "variant": "1x1",
+        "title": "Reze07",
+        "description": "Seven"
+      },
+      {
+        "src": "https://img.131714.xyz/file/blog/Albums/%E8%95%BE%E5%A1%9E/4RvA9WQm.png",
+        "variant": "1x1",
+        "title": "Reze08",
+        "description": "Eight"
       }
     ]
-  },
-  {
-    "id": "c2b5d7e1",
-    "date": "2026-05-15",
-    "event": "新相册",
-    "title": "",
-    "description": "",
-    "icon": "📷",
-    "photos": []
   }
 ]
