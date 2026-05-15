@@ -67,12 +67,12 @@ export async function saveAlbumsToGitHub(
     if (pendingPhotos && Object.keys(pendingPhotos).length > 0) {
       let uploadCount = 0
       for (const [key, { file }] of Object.entries(pendingPhotos)) {
-        // Key format: "albumEvent-photoIndex"
-        const [albumEvent, photoIdxStr] = key.split('::')
+        // Key format: "albumId::photoIndex"
+        const [albumId, photoIdxStr] = key.split('::')
         const photoIdx = parseInt(photoIdxStr)
         const ext = file.name.split('.').pop()?.toLowerCase() || 'png'
         const timestamp = Date.now()
-        const fileName = `${albumEvent}-${photoIdx}-${timestamp}.${ext}`
+        const fileName = `${albumId}-${photoIdx}-${timestamp}.${ext}`
         const imagePath = `${IMAGES_DIR}/${fileName}`
 
         uploadCount++
@@ -95,7 +95,7 @@ export async function saveAlbumsToGitHub(
         })
 
         // Update the photo src in the save copy
-        const album = albumsToSave.find((a) => a.event === albumEvent)
+        const album = albumsToSave.find((a) => a.id === albumId)
         if (album?.photos && album.photos[photoIdx]) {
           album.photos[photoIdx].src = `/image/albums/${fileName}`
         }

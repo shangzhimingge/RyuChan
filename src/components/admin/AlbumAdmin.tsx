@@ -3,7 +3,7 @@
 import { useState, useRef, useEffect, useCallback } from 'react'
 import { motion, AnimatePresence } from 'motion/react'
 import {
-  X, Save, Loader2, ImageIcon, Plus, Trash2, ChevronUp, ChevronDown,
+  Save, Loader2, ImageIcon, Trash2, ChevronUp, ChevronDown,
   Upload, Link, Camera, Settings, Images, ArrowLeft
 } from 'lucide-react'
 import { useAlbumStore } from '@/stores/album-store'
@@ -19,7 +19,7 @@ type Tab = 'info' | 'photos'
 
 export default function AlbumAdmin() {
   const {
-    albums, adminAlbumEvent, isSaving, closeAdmin, saveAlbums,
+    albums, adminAlbumId, isSaving, closeAdmin, saveAlbums,
     updateAlbum, addPhoto, addPhotos, updatePhoto, deletePhoto, reorderPhotos,
     deleteAlbum, addPendingPhoto,
   } = useAlbumStore()
@@ -39,14 +39,14 @@ export default function AlbumAdmin() {
   const [dragOver, setDragOver] = useState(false)
   const fileInputRef = useRef<HTMLInputElement>(null)
 
-  const album = albums.find((a) => a.event === adminAlbumEvent)
-  const albumIndex = albums.findIndex((a) => a.event === adminAlbumEvent)
+  const album = albums.find((a) => a.id === adminAlbumId)
+  const albumIndex = albums.findIndex((a) => a.id === adminAlbumId)
   const canEdit = albumIndex >= 0
   const photos = album?.photos || []
 
-  // Animate in when adminAlbumEvent changes
+  // Animate in when adminAlbumId changes
   useEffect(() => {
-    if (adminAlbumEvent) {
+    if (adminAlbumId) {
       setIsOpen(true)
       setActiveTab('info')
       setPhotoTab('list')
@@ -54,7 +54,7 @@ export default function AlbumAdmin() {
     } else {
       setIsOpen(false)
     }
-  }, [adminAlbumEvent])
+  }, [adminAlbumId])
 
   const handleClose = () => {
     setIsOpen(false)
@@ -73,14 +73,14 @@ export default function AlbumAdmin() {
   // Album field updaters
   const updateField = useCallback((field: keyof AlbumItem, value: string) => {
     if (!album || !canEdit) return
-    updateAlbum(album.event, { ...album, [field]: value })
+    updateAlbum(album.id, { ...album, [field]: value })
   }, [album, canEdit, updateAlbum])
 
   // Add photo from URL
   const handleAddUrl = async () => {
     if (!urlInput.trim() || !album || !canEdit) return
     const variant = await detectVariantFromUrl(urlInput.trim())
-    addPhoto(album.event, {
+    addPhoto(album.id, {
       src: urlInput.trim(),
       variant,
       title: urlTitle.trim() || undefined,
@@ -111,12 +111,12 @@ export default function AlbumAdmin() {
       newItems.push({ src: dataUrl, variant, title: file.name.replace(/\.[^.]+$/, '') })
 
       // Track file for GitHub upload via pending photos
-      const key = `${album.event}::${startIndex + i}`
+      const key = `${album.id}::${startIndex + i}`
       const previewUrl = URL.createObjectURL(file)
       addPendingPhoto(key, { file, previewUrl })
     }
 
-    addPhotos(album.event, newItems)
+    addPhotos(album.id, newItems)
   }
 
   const handleFileInput = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -138,7 +138,7 @@ export default function AlbumAdmin() {
   const handleDeletePhoto = (idx: number) => {
     if (!album || !canEdit) return
     if (confirm('确定要删除这张照片吗？')) {
-      deletePhoto(album.event, idx)
+      deletePhoto(album.id, idx)
     }
   }
 
@@ -146,8 +146,8 @@ export default function AlbumAdmin() {
   const handleDeleteAlbum = () => {
     if (!album || !canEdit) return
     if (!deleteConfirm) { setDeleteConfirm(true); return }
-    if (confirm(`确定要永久删除相册「${album.event}」及其所有照片吗？此操作不可撤销。`)) {
-      deleteAlbum(album.event)
+    if (confirm(`确定要永久删除相册「${album.event || album.title || '未命名'}」及其所有照片吗？此操作不可撤销。`)) {
+      deleteAlbum(album.id)
       handleClose()
     }
   }
@@ -456,7 +456,7 @@ export default function AlbumAdmin() {
                                 type="text"
                                 value={photo.title || ''}
                                 onChange={(e) =>
-                                  canEdit && updatePhoto(album.event, idx, { ...photo, title: e.target.value })
+                                  canEdit && updatePhoto(album.id, idx, { ...photo, title: e.target.value })
                                 }
                                 placeholder="照片标题"
                                 className="bg-transparent text-sm font-medium outline-none border-b border-transparent hover:border-primary/30 focus:border-primary w-full transition-colors"
@@ -464,7 +464,7 @@ export default function AlbumAdmin() {
                               <select
                                 value={photo.variant}
                                 onChange={(e) =>
-                                  canEdit && updatePhoto(album.event, idx, { ...photo, variant: e.target.value as Photo['variant'] })
+                                  canEdit && updatePhoto(album.id, idx, { ...photo, variant: e.target.value as Photo['variant'] })
                                 }
                                 className="text-xs bg-base-300/50 rounded px-1.5 py-0.5 border-0 outline-none cursor-pointer"
                               >
@@ -477,7 +477,7 @@ export default function AlbumAdmin() {
                               type="text"
                               value={photo.description || ''}
                               onChange={(e) =>
-                                canEdit && updatePhoto(album.event, idx, { ...photo, description: e.target.value })
+                                canEdit && updatePhoto(album.id, idx, { ...photo, description: e.target.value })
                               }
                               placeholder="照片描述（可选）"
                               className="bg-transparent text-xs text-base-content/50 outline-none border-b border-transparent hover:border-primary/30 focus:border-primary w-full transition-colors"
@@ -493,7 +493,7 @@ export default function AlbumAdmin() {
                                   type="text"
                                   value={photo.src}
                                   onChange={(e) =>
-                                    canEdit && updatePhoto(album.event, idx, { ...photo, src: e.target.value })
+                                    canEdit && updatePhoto(album.id, idx, { ...photo, src: e.target.value })
                                   }
                                   placeholder="图片 URL"
                                   className="input input-xs input-bordered w-full text-xs"
@@ -509,9 +509,9 @@ export default function AlbumAdmin() {
                                       r.onload = () => res(r.result as string)
                                       r.readAsDataURL(f)
                                     })
-                                    updatePhoto(album.event, idx, { ...photo, src: dataUrl })
+                                    updatePhoto(album.id, idx, { ...photo, src: dataUrl })
                                     // Track file for GitHub upload
-                                    const key = `${album.event}::${idx}`
+                                    const key = `${album.id}::${idx}`
                                     addPendingPhoto(key, { file: f, previewUrl: URL.createObjectURL(f) })
                                   }}
                                   className="text-xs"
@@ -523,7 +523,7 @@ export default function AlbumAdmin() {
                           {/* Actions */}
                           <div className="flex flex-col items-center gap-1 shrink-0">
                             <button
-                              onClick={() => idx > 0 && reorderPhotos(album.event, idx, idx - 1)}
+                              onClick={() => idx > 0 && reorderPhotos(album.id, idx, idx - 1)}
                               disabled={idx === 0}
                               className="btn btn-xs btn-ghost text-base-content/30 hover:text-base-content disabled:opacity-10"
                               title="上移"
@@ -531,7 +531,7 @@ export default function AlbumAdmin() {
                               <ChevronUp className="w-3.5 h-3.5" />
                             </button>
                             <button
-                              onClick={() => idx < photos.length - 1 && reorderPhotos(album.event, idx, idx + 1)}
+                              onClick={() => idx < photos.length - 1 && reorderPhotos(album.id, idx, idx + 1)}
                               disabled={idx === photos.length - 1}
                               className="btn btn-xs btn-ghost text-base-content/30 hover:text-base-content disabled:opacity-10"
                               title="下移"

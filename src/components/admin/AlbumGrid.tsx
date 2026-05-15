@@ -18,8 +18,8 @@ export default function AlbumGrid() {
   const displayAlbums = albums
 
   const handleDeleteAlbum = (album: AlbumItem) => {
-    if (confirm(`确定要删除「${album.event}」及其所有照片吗？此操作不可撤销。`)) {
-      deleteAlbum(album.event)
+    if (confirm(`确定要删除「${album.event || album.title || '未命名'}」及其所有照片吗？此操作不可撤销。`)) {
+      deleteAlbum(album.id)
     }
   }
 
@@ -28,7 +28,7 @@ export default function AlbumGrid() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {displayAlbums.map((album, index) => (
           <div
-            key={album.event + '-' + index}
+            key={album.id}
             className="bg-base-100 rounded-2xl overflow-hidden shadow-sm border border-base-200 hover:shadow-xl transition-all duration-300 animate-fade-in-up group"
             style={{ animationDelay: `${index * 0.1}s` }}
           >
@@ -56,7 +56,7 @@ export default function AlbumGrid() {
                     <ChevronDown className="w-3.5 h-3.5" />
                   </button>
                   <button
-                    onClick={() => openAdmin(album.event)}
+                    onClick={() => openAdmin(album.id)}
                     className="btn btn-xs btn-ghost text-primary hover:bg-primary/10 gap-1 ml-1"
                     title="编辑相册"
                   >
@@ -81,7 +81,7 @@ export default function AlbumGrid() {
                   <h2 className="text-lg font-semibold flex items-center gap-2">
                     {album.icon && <span className="text-xl">{album.icon}</span>}
                     <a
-                      href={`/photo-wall/${encodeURIComponent(album.event)}`}
+                      href={`/photo-wall/${album.id}`}
                       className="text-primary hover:underline"
                     >
                       {album.event}
@@ -112,7 +112,7 @@ export default function AlbumGrid() {
                 <div className="relative w-full overflow-visible" style={{ minHeight: '200px' }}>
                   <PolaroidGallery
                     images={album.photos}
-                    event={album.event}
+                    event={album.id}
                     title={album.title}
                   />
                 </div>

@@ -7,10 +7,10 @@ import { readFileAsText } from '@/lib/file-utils'
 import { toast } from 'sonner'
 
 interface Props {
-  event: string
+  albumId: string
 }
 
-export default function PhotoWallToolbar({ event }: Props) {
+export default function PhotoWallToolbar({ albumId }: Props) {
   const {
     isEditMode,
     isSaving,
@@ -80,9 +80,9 @@ export default function PhotoWallToolbar({ event }: Props) {
         >
           {isAuth ? '已导入' : '导入密钥'}
         </button>
-        {event && (
+        {albumId && (
           <button
-            onClick={() => openAdmin(event)}
+            onClick={() => openAdmin(albumId)}
             className="btn btn-sm btn-outline gap-1 rounded-xl font-semibold"
           >
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>

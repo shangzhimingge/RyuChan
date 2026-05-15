@@ -5,7 +5,7 @@ import { useAlbumStore } from '@/stores/album-store'
 import { useAuthStore } from '@/components/write/hooks/use-auth'
 import { readFileAsText } from '@/lib/file-utils'
 import { toast } from 'sonner'
-import type { AlbumItem } from '@/data/albums'
+import { generateAlbumId, type AlbumItem } from '@/data/albums'
 
 export default function AlbumToolbar() {
   const {
@@ -37,6 +37,7 @@ export default function AlbumToolbar() {
 
   const handleAddAlbum = () => {
     const newAlbum: AlbumItem = {
+      id: generateAlbumId(),
       date: new Date().toISOString().split('T')[0],
       event: '新相册',
       title: '',
@@ -45,7 +46,7 @@ export default function AlbumToolbar() {
       photos: [],
     }
     addAlbum(newAlbum)
-    openAdmin(newAlbum.event)
+    openAdmin(newAlbum.id)
   }
 
   if (!isEditMode) {

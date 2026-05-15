@@ -7,7 +7,7 @@ import { toast } from 'sonner'
 
 interface UnsavedChange {
   type: 'album_update' | 'album_add' | 'album_delete' | 'album_move' | 'photo_add' | 'photo_update' | 'photo_delete' | 'photo_move'
-  albumEvent: string
+  albumId: string
   timestamp: number
 }
 
@@ -20,32 +20,32 @@ interface AlbumStore {
   albums: AlbumItem[]
   isEditMode: boolean
   isSaving: boolean
-  adminAlbumEvent: string | null
+  adminAlbumId: string | null
 
   // Track uploaded files that need to be pushed to GitHub on save
-  // Key: "albumEvent::photoIndex"
+  // Key: "albumId::photoIndex"
   pendingPhotos: Record<string, PendingPhotoEntry>
 
   toggleEditMode: () => void
   enterEditMode: () => void
   exitEditMode: () => void
-  openAdmin: (event: string) => void
+  openAdmin: (id: string) => void
   closeAdmin: () => void
   saveAlbums: () => Promise<void>
   resetToDefaults: () => void
 
   // Album CRUD
   addAlbum: (album: AlbumItem) => void
-  updateAlbum: (event: string, album: AlbumItem) => void
-  deleteAlbum: (event: string) => void
+  updateAlbum: (id: string, album: AlbumItem) => void
+  deleteAlbum: (id: string) => void
   moveAlbum: (fromIndex: number, toIndex: number) => void
 
   // Photo CRUD
-  addPhoto: (event: string, photo: Photo, file?: File) => void
-  addPhotos: (event: string, photos: Photo[], files?: File[]) => void
-  updatePhoto: (event: string, photoIndex: number, photo: Photo, file?: File) => void
-  deletePhoto: (event: string, photoIndex: number) => void
-  reorderPhotos: (event: string, fromIndex: number, toIndex: number) => void
+  addPhoto: (id: string, photo: Photo, file?: File) => void
+  addPhotos: (id: string, photos: Photo[], files?: File[]) => void
+  updatePhoto: (id: string, photoIndex: number, photo: Photo, file?: File) => void
+  deletePhoto: (id: string, photoIndex: number) => void
+  reorderPhotos: (id: string, fromIndex: number, toIndex: number) => void
 
   // Pending photo tracking
   addPendingPhoto: (key: string, entry: PendingPhotoEntry) => void
@@ -58,23 +58,23 @@ export const useAlbumStore = create<AlbumStore>()(
       albums: defaultAlbums,
       isEditMode: false,
       isSaving: false,
-      adminAlbumEvent: null,
+      adminAlbumId: null,
       pendingPhotos: {},
 
       toggleEditMode: () => {
         const current = get().isEditMode
         if (current) {
-          set({ isEditMode: false, adminAlbumEvent: null })
+          set({ isEditMode: false, adminAlbumId: null })
         } else {
           set({ isEditMode: true })
         }
       },
 
       enterEditMode: () => set({ isEditMode: true }),
-      exitEditMode: () => set({ isEditMode: false, adminAlbumEvent: null }),
+      exitEditMode: () => set({ isEditMode: false, adminAlbumId: null }),
 
-      openAdmin: (event: string) => set({ adminAlbumEvent: event }),
-      closeAdmin: () => set({ adminAlbumEvent: null }),
+      openAdmin: (id: string) => set({ adminAlbumId: id }),
+      closeAdmin: () => set({ adminAlbumId: null }),
 
       saveAlbums: async () => {
         const { albums, pendingPhotos } = get()
@@ -87,7 +87,7 @@ export const useAlbumStore = create<AlbumStore>()(
             albums: savedAlbums,
             isSaving: false,
             isEditMode: false,
-            adminAlbumEvent: null,
+            adminAlbumId: null,
             pendingPhotos: {},
           })
         } catch (error: any) {
@@ -106,15 +106,15 @@ export const useAlbumStore = create<AlbumStore>()(
         toast.success('相册已添加')
       },
 
-      updateAlbum: (event: string, album: AlbumItem) => {
+      updateAlbum: (id: string, album: AlbumItem) => {
         set((state) => ({
-          albums: state.albums.map((a) => (a.event === event ? album : a))
+          albums: state.albums.map((a) => (a.id === id ? album : a))
         }))
       },
 
-      deleteAlbum: (event: string) => {
+      deleteAlbum: (id: string) => {
         set((state) => ({
-          albums: state.albums.filter((a) => a.event !== event)
+          albums: state.albums.filter((a) => a.id !== id)
         }))
         toast.success('相册已删除')
       },
@@ -128,29 +128,29 @@ export const useAlbumStore = create<AlbumStore>()(
         })
       },
 
-      addPhoto: (event: string, photo: Photo, _file?: File) => {
+      addPhoto: (id: string, photo: Photo, _file?: File) => {
         set((state) => ({
           albums: state.albums.map((a) => {
-            if (a.event !== event) return a
+            if (a.id !== id) return a
             return { ...a, photos: [...(a.photos || []), photo] }
           })
         }))
       },
 
-      addPhotos: (event: string, photos: Photo[], _files?: File[]) => {
+      addPhotos: (id: string, photos: Photo[], _files?: File[]) => {
         set((state) => ({
           albums: state.albums.map((a) => {
-            if (a.event !== event) return a
+            if (a.id !== id) return a
             return { ...a, photos: [...(a.photos || []), ...photos] }
           })
         }))
         toast.success(`已添加 ${photos.length} 张照片`)
       },
 
-      updatePhoto: (event: string, photoIndex: number, photo: Photo, _file?: File) => {
+      updatePhoto: (id: string, photoIndex: number, photo: Photo, _file?: File) => {
         set((state) => ({
           albums: state.albums.map((a) => {
-            if (a.event !== event) return a
+            if (a.id !== id) return a
             const photos = [...(a.photos || [])]
             photos[photoIndex] = photo
             return { ...a, photos }
@@ -158,19 +158,19 @@ export const useAlbumStore = create<AlbumStore>()(
         }))
       },
 
-      deletePhoto: (event: string, photoIndex: number) => {
+      deletePhoto: (id: string, photoIndex: number) => {
         set((state) => ({
           albums: state.albums.map((a) => {
-            if (a.event !== event) return a
+            if (a.id !== id) return a
             return { ...a, photos: (a.photos || []).filter((_, i) => i !== photoIndex) }
           })
         }))
       },
 
-      reorderPhotos: (event: string, fromIndex: number, toIndex: number) => {
+      reorderPhotos: (id: string, fromIndex: number, toIndex: number) => {
         set((state) => ({
           albums: state.albums.map((a) => {
-            if (a.event !== event) return a
+            if (a.id !== id) return a
             const photos = [...(a.photos || [])]
             const [moved] = photos.splice(fromIndex, 1)
             photos.splice(toIndex, 0, moved)
@@ -200,23 +200,29 @@ export const useAlbumStore = create<AlbumStore>()(
       name: 'album-store-v3',
       partialize: (state) => ({ albums: state.albums }),
       merge: (persisted, current) => {
-        const persistedAlbums = (persisted as { albums?: AlbumItem[] })?.albums || []
-        const currentAlbums = current.albums || []
+        const persistedAlbums = (persisted as { albums?: AlbumItem[] })?.albums
 
-        const defaultByEvent = new Map<string, AlbumItem>()
-        for (const a of currentAlbums) { defaultByEvent.set(a.event, a) }
+        // Use persisted data as the source of truth once the user has made edits.
+        // Avoids duplicates when albums are renamed (old event name in defaults
+        // would otherwise be re-added as a separate album).
+        if (persistedAlbums && persistedAlbums.length > 0) {
+          const currentAlbums = current.albums || []
 
-        const merged: AlbumItem[] = persistedAlbums.map((a) => {
-          const def = defaultByEvent.get(a.event)
-          if (def?.photos?.length && (!a.photos || a.photos.length === 0)) {
-            return { ...a, photos: [...def.photos] }
-          }
-          return a
-        })
+          const defaultById = new Map<string, AlbumItem>()
+          for (const a of currentAlbums) { defaultById.set(a.id, a) }
 
-        const mergedEvents = new Set(merged.map((a) => a.event))
-        const newDefaults = currentAlbums.filter((a) => !mergedEvents.has(a.event))
-        return { ...current, albums: [...merged, ...newDefaults] }
+          const merged: AlbumItem[] = persistedAlbums.map((a) => {
+            const def = defaultById.get(a.id)
+            if (def?.photos?.length && (!a.photos || a.photos.length === 0)) {
+              return { ...a, photos: [...def.photos] }
+            }
+            return a
+          })
+
+          return { ...current, albums: merged }
+        }
+
+        return current
       },
     }
   )

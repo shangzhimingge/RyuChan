@@ -8,12 +8,17 @@ export interface Photo {
 }
 
 export interface AlbumItem {
+    id: string;
     date: string;
     event: string;
     title: string;
     description?: string;
     icon?: string;
     photos?: Photo[];
+}
+
+export function generateAlbumId(): string {
+    return crypto.randomUUID().slice(0, 8)
 }
 
 export const albums: AlbumItem[] = albumsData as AlbumItem[];
