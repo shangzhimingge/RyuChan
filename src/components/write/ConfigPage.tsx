@@ -62,6 +62,12 @@ export function ConfigPage() {
     // 歌单选中状态 - 用于歌单连续上下移动
     const [selectedPlaylistId, setSelectedPlaylistId] = useState<string | null>(null)
 
+    // music.json 相关状态
+    const [musicData, setMusicData] = useState<any>(null)
+    const [musicDataDirty, setMusicDataDirty] = useState(false)
+    // 自定义歌单的原始 JSON 文本（未解析），解决编辑时 JSON 解析失败导致输入无法更新的问题
+    const [customPlaylistText, setCustomPlaylistText] = useState<Record<string, string>>({})
+
     useEffect(() => {
         loadConfig()
     }, [isAuth])
@@ -97,6 +103,51 @@ export function ConfigPage() {
     }, [configContent, mode])
 
 
+
+    const loadMusicData = async () => {
+        try {
+            let token: string | undefined
+            try {
+                token = await getAuthToken()
+            } catch (e) {
+                console.log('Public access mode for music data')
+            }
+
+            // 尝试从 GitHub 读取 music.json
+            let content: string | null | undefined
+            try {
+                content = await readTextFileFromRepo(
+                    token,
+                    GITHUB_CONFIG.OWNER,
+                    GITHUB_CONFIG.REPO,
+                    'src/data/music.json',
+                    GITHUB_CONFIG.BRANCH
+                )
+            } catch (e) {
+                console.log('GitHub music.json fetch failed, trying local...')
+            }
+
+            // 如果 GitHub 没有数据，尝试从本地加载
+            if (!content) {
+                try {
+                    const localRes = await fetch('/data/music.json')
+                    if (localRes.ok) {
+                        content = await localRes.text()
+                        console.log('Loaded music.json from local file')
+                    }
+                } catch (e) {
+                    console.log('Local music.json not available')
+                }
+            }
+
+            if (content) {
+                const parsed = JSON.parse(content)
+                setMusicData(parsed)
+            }
+        } catch (error) {
+            console.error('加载 music.json 失败:', error)
+        }
+    }
 
     const loadConfig = async () => {
         try {
@@ -158,6 +209,9 @@ export function ConfigPage() {
                 }
                 setLastFetchedContent(content)
             }
+
+            // 同时加载 music.json
+            await loadMusicData()
         } catch (error: any) {
             toast.error('加载配置失败: ' + error.message)
         } finally {
@@ -260,7 +314,8 @@ export function ConfigPage() {
         playlists.push({
             id: newId,
             name: '',
-            server: 'netease'
+            server: 'netease',
+            type: 'id' // 'id' 或 'custom'
         })
         updateConfigValue('music.playlists', playlists)
         setSelectedPlaylistId(newId)
@@ -268,6 +323,53 @@ export function ConfigPage() {
     }
 
     const isTempId = (id: string) => !id || id.startsWith('__')
+
+    // 获取自定义歌单的歌曲数据
+    const getCustomPlaylistSongs = (playlistId: string) => {
+        if (!musicData?.playlistSongs?.[playlistId]) {
+            return ''
+        }
+        return JSON.stringify({ songs: musicData.playlistSongs[playlistId] }, null, 4)
+    }
+
+    // 更新自定义歌单的歌曲数据到 musicData
+    const updateCustomPlaylistSongs = (playlistId: string, jsonData: string) => {
+        try {
+            let songs: any[] = []
+            if (jsonData.trim()) {
+                const parsed = JSON.parse(jsonData)
+                songs = parsed.songs || []
+            }
+
+            setMusicData((prev: any) => {
+                const newData = JSON.parse(JSON.stringify(prev || { songs: [], playlistCounts: {}, playlistSongs: {} }))
+
+                // 更新 playlistSongs
+                if (!newData.playlistSongs) newData.playlistSongs = {}
+                newData.playlistSongs[playlistId] = songs
+
+                // 更新 playlistCounts
+                if (!newData.playlistCounts) newData.playlistCounts = {}
+                newData.playlistCounts[playlistId] = songs.length
+
+                // 更新 songs 数组（合并所有歌单的歌曲，去重）
+                const songMap = new Map()
+                Object.values(newData.playlistSongs || {}).forEach(plSongs => {
+                    (plSongs as any[]).forEach(song => {
+                        if (song.url) songMap.set(song.url, song)
+                    })
+                })
+                newData.songs = Array.from(songMap.values())
+
+                return newData
+            })
+
+            setMusicDataDirty(true)
+            setIsDirty(true)
+        } catch (e) {
+            console.error('解析自定义歌单数据失败:', e)
+        }
+    }
 
     const removePlaylistEntry = (index: number) => {
         const playlists = [...(parsedConfig?.music?.playlists || [])]
@@ -280,6 +382,39 @@ export function ConfigPage() {
     const updatePlaylistEntry = (index: number, field: string, value: string) => {
         const playlists = JSON.parse(JSON.stringify(parsedConfig?.music?.playlists || []))
         if (!playlists[index]) playlists[index] = {}
+
+        // 如果是更新ID，并且是自定义歌单，需要同步更新 musicData.playlistSongs 中的键
+        if (field === 'id' && playlists[index].type === 'custom' && musicData) {
+            const oldId = playlists[index].id
+            const isOldIdValid = oldId && !isTempId(oldId)
+            if (isOldIdValid && musicData.playlistSongs && musicData.playlistSongs[oldId]) {
+                setMusicData((prev: any) => {
+                    const newData = JSON.parse(JSON.stringify(prev))
+                    // 迁移旧ID的数据到新ID
+                    newData.playlistSongs[value] = newData.playlistSongs[oldId]
+                    // 删除旧ID的数据
+                    delete newData.playlistSongs[oldId]
+                    // 同时更新 playlistCounts
+                    if (newData.playlistCounts && newData.playlistCounts[oldId]) {
+                        newData.playlistCounts[value] = newData.playlistCounts[oldId]
+                        delete newData.playlistCounts[oldId]
+                    }
+                    return newData
+                })
+                setMusicDataDirty(true)
+                // 同步迁移原始 JSON 文本
+                setCustomPlaylistText(prev => {
+                    if (prev[oldId] !== undefined) {
+                        const next = { ...prev }
+                        next[value] = next[oldId]
+                        delete next[oldId]
+                        return next
+                    }
+                    return prev
+                })
+            }
+        }
+
         playlists[index][field] = value
         updateConfigValue('music.playlists', playlists)
     }
@@ -311,6 +446,42 @@ export function ConfigPage() {
             setSaving(true)
             const token = await getAuthToken()
             if (!token) throw new Error('未授权')
+
+            // 保存前将原始自定义歌单文本刷入 musicData，防止丢失未解析完成的编辑
+            // 构建合并后的 musicData 用于保存（不依赖 setState 的异步更新）
+            let musicDataForSave = musicData ? JSON.parse(JSON.stringify(musicData)) : { songs: [], playlistCounts: {}, playlistSongs: {} }
+            const playlists = parsedConfig?.music?.playlists || []
+            for (const pl of playlists) {
+                if (pl.type === 'custom' && customPlaylistText[pl.id] !== undefined) {
+                    const rawText = customPlaylistText[pl.id]
+                    try {
+                        let songs: any[] = []
+                        if (rawText.trim()) {
+                            const parsed = JSON.parse(rawText)
+                            songs = parsed.songs || []
+                        }
+                        if (!musicDataForSave.playlistSongs) musicDataForSave.playlistSongs = {}
+                        musicDataForSave.playlistSongs[pl.id] = songs
+                        if (!musicDataForSave.playlistCounts) musicDataForSave.playlistCounts = {}
+                        musicDataForSave.playlistCounts[pl.id] = songs.length
+                    } catch {
+                        toast.error(`自定义歌单 "${pl.name || pl.id}" 的 JSON 格式无效，请修正后再保存`)
+                        setSaving(false)
+                        return
+                    }
+                }
+            }
+            // 重建 songs 数组（合并所有歌单，按 url 去重）
+            {
+                const songMap = new Map()
+                Object.values(musicDataForSave.playlistSongs || {}).forEach(plSongs => {
+                    (plSongs as any[]).forEach(song => {
+                        if (song.url) songMap.set(song.url, song)
+                    })
+                })
+                musicDataForSave.songs = Array.from(songMap.values())
+            }
+            setMusicData(musicDataForSave)
 
             const toastId = toast.loading('🚀 正在初始化保存...')
 
@@ -388,7 +559,21 @@ export function ConfigPage() {
                 sha: configSha
             })
 
-            // 3. Create Commit
+            // 3. Process Music Data File (if dirty)
+            if (musicDataDirty && musicDataForSave) {
+                toast.loading('正在创建 music.json Blob...', { id: toastId })
+                const musicContent = JSON.stringify(musicDataForSave, null, 4)
+                const musicBase64 = toBase64Utf8(musicContent)
+                const { sha: musicSha } = await createBlob(token, GITHUB_CONFIG.OWNER, GITHUB_CONFIG.REPO, musicBase64, 'base64')
+                treeItems.push({
+                    path: 'src/data/music.json',
+                    mode: '100644',
+                    type: 'blob',
+                    sha: musicSha
+                })
+            }
+
+            // 4. Create Commit
             toast.loading('正在获取分支信息...', { id: toastId })
 
             // Get current ref
@@ -406,11 +591,14 @@ export function ConfigPage() {
 
             // Create new commit
             toast.loading('💾 正在创建提交...', { id: toastId })
+            const commitMessage = musicDataDirty
+                ? 'chore(config): update site configuration and custom playlists'
+                : 'chore(config): update site configuration'
             const { sha: newCommitSha } = await createCommit(
                 token,
                 GITHUB_CONFIG.OWNER,
                 GITHUB_CONFIG.REPO,
-                'chore(config): update site configuration',
+                commitMessage,
                 newTreeSha,
                 [currentCommitSha]
             )
@@ -418,6 +606,11 @@ export function ConfigPage() {
             // Update ref
             toast.loading('🔄 正在同步远程分支...', { id: toastId })
             await updateRef(token, GITHUB_CONFIG.OWNER, GITHUB_CONFIG.REPO, refName, newCommitSha)
+
+            // Reset dirty states
+            setIsDirty(false)
+            setMusicDataDirty(false)
+            setLastFetchedContent(contentToSave)
 
             toast.success('🎉 配置更新成功！', {
                 id: toastId,
@@ -903,26 +1096,106 @@ export function ConfigPage() {
                                                             <div className="collapse-title text-sm font-medium flex items-center gap-3 pr-10 min-h-0 py-3">
                                                                 <span className={`badge badge-sm font-mono ${isSelected ? 'badge-primary' : ''}`}>{String(index + 1).padStart(2, '0')}</span>
                                                                 <span className="flex-1 truncate">{item.name || '未命名歌单'}</span>
-                                                                <span className="badge badge-xs badge-ghost font-mono text-xs truncate max-w-[100px]">{isTempId(item.id) ? '未设置' : item.id}</span>
+                                                                <span className={`badge badge-xs font-mono text-xs truncate max-w-[100px] ${item.type === 'custom' ? 'badge-info' : 'badge-ghost'}`}>
+                                                                    {item.type === 'custom' ? '自定义' : (isTempId(item.id) ? '未设置' : item.id)}
+                                                                </span>
                                                             </div>
                                                             <div className="collapse-content">
-                                                                <div className="grid grid-cols-1 md:grid-cols-2 gap-3 pt-2 pb-1">
-                                                                    <div className="form-control w-full">
-                                                                        <label className="label py-0.5"><span className="label-text text-xs text-base-content/60">歌单名称</span></label>
-                                                                        <input type="text" className="input input-sm input-bordered w-full bg-base-100 focus:border-primary"
-                                                                            placeholder="例如: 我的最爱"
-                                                                            value={item.name || ''}
-                                                                            onClick={e => e.stopPropagation()}
-                                                                            onChange={e => updatePlaylistEntry(index, 'name', e.target.value)} />
+                                                                <div className="space-y-3 pt-2 pb-1">
+                                                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                                                                        <div className="form-control w-full">
+                                                                            <label className="label py-0.5"><span className="label-text text-xs text-base-content/60">歌单名称</span></label>
+                                                                            <input type="text" className="input input-sm input-bordered w-full bg-base-100 focus:border-primary"
+                                                                                placeholder="例如: 我的最爱"
+                                                                                value={item.name || ''}
+                                                                                onClick={e => e.stopPropagation()}
+                                                                                onChange={e => updatePlaylistEntry(index, 'name', e.target.value)} />
+                                                                        </div>
+                                                                        <div className="form-control w-full">
+                                                                            <label className="label py-0.5"><span className="label-text text-xs text-base-content/60">歌单类型</span></label>
+                                                                            <div onClick={e => e.stopPropagation()}>
+                                                                                <CustomSelect
+                                                                                    value={item.type || 'id'}
+                                                                                    onChange={val => updatePlaylistEntry(index, 'type', val)}
+                                                                                    options={[
+                                                                                        { value: 'id', label: '网易云歌单 ID' },
+                                                                                        { value: 'custom', label: '自定义音乐 (JSON)' }
+                                                                                    ]}
+                                                                                    className="w-full"
+                                                                                />
+                                                                            </div>
+                                                                        </div>
                                                                     </div>
+
+                                                                    {/* 歌单 ID 编辑（两种类型都显示） */}
                                                                     <div className="form-control w-full">
-                                                                        <label className="label py-0.5"><span className="label-text text-xs text-base-content/60">网易云歌单 ID</span></label>
+                                                                        <label className="label py-0.5"><span className="label-text text-xs text-base-content/60">{item.type === 'id' ? '网易云歌单 ID' : '自定义歌单 ID'}</span></label>
                                                                         <input type="text" className="input input-sm input-bordered w-full bg-base-100 focus:border-primary font-mono text-xs"
-                                                                            placeholder="例如: 17957187425"
-                                                                            value={isTempId(item.id) ? '' : (item.id || '')}
+                                                                            placeholder={item.type === 'id' ? "例如: 17957187425" : "例如: my_playlist_01"}
+                                                                            defaultValue={isTempId(item.id) ? '' : (item.id || '')}
                                                                             onClick={e => e.stopPropagation()}
-                                                                            onChange={e => { const newVal = e.target.value || `__new_${index}`; updatePlaylistEntry(index, 'id', newVal); setSelectedPlaylistId(newVal); }} />
+                                                                            onBlur={e => {
+                                                                                const newVal = e.target.value || `__new_${index}`
+                                                                                updatePlaylistEntry(index, 'id', newVal)
+                                                                                setSelectedPlaylistId(newVal)
+                                                                            }} />
                                                                     </div>
+
+                                                                    {/* 自定义歌单的 JSON 编辑 */}
+                                                                    {item.type === 'custom' && (
+                                                                        <div className="form-control w-full">
+                                                                            <label className="label py-0.5"><span className="label-text text-xs text-base-content/60">自定义音乐 JSON</span></label>
+                                                                            <textarea
+                                                                                className="textarea textarea-bordered w-full h-64 bg-base-100 focus:border-primary font-mono text-xs"
+                                                                                placeholder='{
+  "songs": [
+    {
+      "title": "歌曲名称",
+      "artist": "歌手名",
+      "cover": "封面图片URL",
+      "url": "音频文件URL",
+      "lrc": "歌词URL(可选)",
+      "duration": "时长(可选，如04:59) // 部署时自动运行 pnpm prefetch:music 获取时长"
+    }
+  ]
+}'
+                                                                                value={customPlaylistText[item.id] ?? getCustomPlaylistSongs(item.id)}
+                                                                                onClick={e => e.stopPropagation()}
+                                                                                onChange={e => {
+                                                                                    const rawText = e.target.value
+                                                                                    setCustomPlaylistText(prev => ({ ...prev, [item.id]: rawText }))
+                                                                                    setMusicDataDirty(true)
+                                                                                    setIsDirty(true)
+                                                                                    // 尝试解析 JSON，如果有效则同步更新 musicData
+                                                                                    try {
+                                                                                        let songs: any[] = []
+                                                                                        if (rawText.trim()) {
+                                                                                            const parsed = JSON.parse(rawText)
+                                                                                            songs = parsed.songs || []
+                                                                                        }
+                                                                                        setMusicData((prev: any) => {
+                                                                                            const newData = JSON.parse(JSON.stringify(prev || { songs: [], playlistCounts: {}, playlistSongs: {} }))
+                                                                                            if (!newData.playlistSongs) newData.playlistSongs = {}
+                                                                                            newData.playlistSongs[item.id] = songs
+                                                                                            if (!newData.playlistCounts) newData.playlistCounts = {}
+                                                                                            newData.playlistCounts[item.id] = songs.length
+                                                                                            const songMap = new Map()
+                                                                                            Object.values(newData.playlistSongs || {}).forEach(plSongs => {
+                                                                                                (plSongs as any[]).forEach(song => {
+                                                                                                    if (song.url) songMap.set(song.url, song)
+                                                                                                })
+                                                                                            })
+                                                                                            newData.songs = Array.from(songMap.values())
+                                                                                            return newData
+                                                                                        })
+                                                                                    } catch (_) {
+                                                                                        // JSON 还不完整，保留原始文本等用户继续编辑
+                                                                                    }
+                                                                                }}
+                                                                                spellCheck={false}
+                                                                            />
+                                                                        </div>
+                                                                    )}
                                                                 </div>
                                                                 <div className="flex items-center gap-2 mt-3 pt-2 border-t border-base-300">
                                                                     <button onClick={(e) => { e.stopPropagation(); movePlaylistEntry(item.id, 'up'); }} disabled={index === 0} className="btn btn-xs btn-ghost">↑</button>

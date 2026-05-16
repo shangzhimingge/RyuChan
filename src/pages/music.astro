@@ -7,7 +7,7 @@ import { MUSIC_CONFIG } from "@/config";
 const basePlaylists = MUSIC_CONFIG?.playlists || [];
 const playlists = [
   { id: "all", name: "全部音乐" },
-  ...basePlaylists
+  ...basePlaylists.map(pl => ({ id: pl.id, name: pl.name }))
 ];
 
 const counts = { ...playlistCounts, "all": musicList.length };

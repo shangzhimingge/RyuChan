@@ -41,7 +41,7 @@ async function fetchPlaylistSongs(playlistId, trans) {
         duration: ""
       };
     });
-  } catch(e) {
+  } catch (e) {
     console.error(`  ❌ Failed to fetch playlist ${playlistId}:`, e.message);
     return [];
   }
@@ -73,7 +73,7 @@ async function fetchDurationForSong(item) {
               }
             }
           }
-        } catch(e) {
+        } catch (e) {
           // Netease API failed → fall through to buffer method below
         }
       }
@@ -98,7 +98,7 @@ async function fetchDurationForSong(item) {
           return true;
         }
       }
-    } catch(e) {
+    } catch (e) {
       // retry on error (network timeout, etc.)
     }
 
@@ -145,7 +145,7 @@ async function fetchMusicDuration() {
       existingData.songs.forEach(s => {
         if (s.url && s.duration) urlToDuration.set(s.url, s.duration);
       });
-    } catch(e) { /* no existing data */ }
+    } catch (e) { /* no existing data */ }
 
     // Fetch all playlists
     const playlistCounts = {};
@@ -155,8 +155,22 @@ async function fetchMusicDuration() {
     const urlToSong = new Map();
 
     for (const pl of playlists) {
-      const songs = await fetchPlaylistSongs(pl.id, trans);
-      console.log(`  ✅ ${pl.name || pl.id}: ${songs.length} 首`);
+      let songs;
+      if (pl.type === 'custom') {
+        // 处理自定义歌单 - 从 music.json 的 playlistSongs 中读取
+        try {
+          songs = existingData.playlistSongs?.[pl.id] || [];
+          console.log(`  ✅ ${pl.name || pl.id} (自定义): ${songs.length} 首`);
+        } catch (e) {
+          console.error(`  ❌ 读取自定义歌单 ${pl.name || pl.id} 失败:`, e.message);
+          songs = [];
+        }
+      } else {
+        // 处理普通 ID 歌单
+        songs = await fetchPlaylistSongs(pl.id, trans);
+        console.log(`  ✅ ${pl.name || pl.id}: ${songs.length} 首`);
+      }
+
       playlistCounts[pl.id] = songs.length;
       playlistSongs[pl.id] = [];
 
@@ -223,7 +237,7 @@ async function fetchMusicDuration() {
           try {
             await fs.writeFile(MUSIC_DATA_PATH, JSON.stringify(output, null, 4), 'utf-8');
             console.log(`  💾 Saved (${success} resolved so far)`);
-          } catch(e) {
+          } catch (e) {
             console.error('  ⚠️  Save failed:', e.message);
           }
         }

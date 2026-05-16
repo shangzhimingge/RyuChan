@@ -8,25 +8,15 @@ export interface MusicItem {
 }
 
 /**
- * 此时歌曲数据源于 Meting API 自动生成的 './music.json'.
- * 可以通过修改 `scripts/fetch-music-duration.mjs` 中的 playlistId 切换歌单.
- * 或者在此处继续混入额外的静态音乐对象，格式如下:
- * {
- *   "title": "新歌歌名",
- *   "artist": "歌手",
- *   "cover": "封面链接",
- *   "url": "音频链接",
- *   "lrc": "歌词链接(可选)",
- *   "duration": "00:00(将会自动抓取)"
- * }
- *
- * 运行 `pnpm prefetch:music` 即可自动更新 Meting 歌单数据。
+ * 此时歌曲数据源于 Meting API 自动生成的 './music.json' 以及配置中的自定义歌单.
+ * 运行 `pnpm prefetch:music` 即可自动更新 Meting 歌单数据及自定义音乐时长。
  */
 import musicData from './music.json';
 
-// 兼容新旧格式：新格式为 { songs, playlistCounts }, 旧格式为数组
 const raw: any = musicData;
-export const musicList: MusicItem[] = Array.isArray(raw) ? raw : (raw.songs || []);
+const musicList: MusicItem[] = Array.isArray(raw) ? raw : (raw.songs || []);
+
+export { musicList };
 
 export const playlistCounts: Record<string, number> = Array.isArray(raw) ? {} : (raw.playlistCounts || {});
 

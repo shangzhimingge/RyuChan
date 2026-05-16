@@ -3055,6 +3055,22 @@
             "url": "https://163.hyc.moe?server=netease&type=url&id=2022069283&br=320",
             "lrc": "https://163.hyc.moe?server=netease&type=lrc&id=2022069283&format=lrc&trans=true",
             "duration": "05:08"
+        },
+        {
+            "artist": "周杰伦",
+            "cover": "https://y.qq.com/music/photo_new/T002R300x300M000003DFRzD192KKD_2.jpg?max_age=2592000",
+            "duration": "04:57",
+            "lrc": "https://imgbed.904002.xyz/file/music/歌词/周杰伦/七里香.lrc",
+            "title": "七里香",
+            "url": "https://music1.904002.xyz/%E5%91%A8%E6%9D%B0%E4%BC%A6/七里香.flac"
+        },
+        {
+            "artist": "周杰伦",
+            "cover": "https://y.qq.com/music/photo_new/T002R300x300M000000MkMni19ClKG_5.jpg?max_age=2592000",
+            "duration": "04:29",
+            "lrc": "https://imgbed.904002.xyz/file/music/歌词/周杰伦/晴天.lrc",
+            "title": "晴天",
+            "url": "https://music1.904002.xyz/%E5%91%A8%E6%9D%B0%E4%BC%A6/晴天.flac"
         }
     ],
     "playlistCounts": {
@@ -3065,7 +3081,8 @@
         "17957136689": 48,
         "17957661244": 50,
         "17957179525": 49,
-        "17966019560": 50
+        "17966019560": 50,
+        "zhoujl_test": 128
     },
     "playlistSongs": {
         "17933567326": [
@@ -6258,6 +6275,24 @@
                 "url": "https://163.hyc.moe?server=netease&type=url&id=2022069283&br=320",
                 "lrc": "https://163.hyc.moe?server=netease&type=lrc&id=2022069283&format=lrc&trans=true",
                 "duration": "05:08"
+            }
+        ],
+        "zhoujl_test": [
+            {
+                "artist": "周杰伦",
+                "cover": "https://y.qq.com/music/photo_new/T002R300x300M000003DFRzD192KKD_2.jpg?max_age=2592000",
+                "duration": "04:57",
+                "lrc": "https://imgbed.904002.xyz/file/music/歌词/周杰伦/七里香.lrc",
+                "title": "七里香",
+                "url": "https://music1.904002.xyz/%E5%91%A8%E6%9D%B0%E4%BC%A6/七里香.flac"
+            },
+            {
+                "artist": "周杰伦",
+                "cover": "https://y.qq.com/music/photo_new/T002R300x300M000000MkMni19ClKG_5.jpg?max_age=2592000",
+                "duration": "04:29",
+                "lrc": "https://imgbed.904002.xyz/file/music/歌词/周杰伦/晴天.lrc",
+                "title": "晴天",
+                "url": "https://music1.904002.xyz/%E5%91%A8%E6%9D%B0%E4%BC%A6/晴天.flac"
             }
         ]
     }

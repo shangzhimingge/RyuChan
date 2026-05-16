@@ -130,6 +130,10 @@ music:
     - id: '17966019560'
       name: 告五人
       server: netease
+    - id: 'zhoujl_test'
+      name: 周杰伦测试一下
+      server: netease
+      type: custom
 github:
   owner: kobaridev
   repo: RyuChan
