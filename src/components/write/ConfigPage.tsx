@@ -32,6 +32,23 @@ const SOCIAL_PRESETS = [
     { label: 'RSS', value: 'ri:rss-fill' },
     { label: 'Weibo', value: 'ri:weibo-fill' },
     { label: 'Zhihu', value: 'ri:zhihu-line' },
+    { label: 'Pixiv', value: 'si:pixiv' },
+    { label: 'Steam', value: 'ri:steam-line' },
+    { label: 'YouTube', value: 'ri:youtube-line' },
+    { label: 'Reddit', value: 'ri:reddit-line' },
+    { label: 'Facebook', value: 'ri:facebook-line' },
+    { label: 'Instagram', value: 'ri:instagram-line' },
+    { label: 'Rednote', value: 'si:xiaohongshu' },
+    { label: 'Baidutieba', value: 'ri:baidu-line' },
+    { label: 'CloudMusic', value: 'ri:netease-cloud-music-line' },
+    { label: 'Xianyu', value: 'ri:shopping-bag-line' },
+    { label: 'Douban', value: 'ri:douban-line' },
+    { label: 'Discord', value: 'ri:discord-line' },
+    { label: 'Spotify', value: 'ri:spotify-line' },
+    { label: 'LinkedIn', value: 'ri:linkedin-box-line' },
+    { label: 'Twitch', value: 'ri:twitch-line' },
+    { label: 'GitLab', value: 'ri:gitlab-line' },
+    { label: 'Mastodon', value: 'ri:mastodon-line' },
     { label: 'Other', value: 'ri:link' }
 ]
 
@@ -963,6 +980,7 @@ export function ConfigPage() {
                                     {/* Social Buttons (moved here) */}
                                     <div className="space-y-4">
                                         <div className="text-sm font-medium text-base-content/70 ml-1">社交按钮</div>
+                                        <div className="text-sm font-medium text-base-content/70 ml-1">填写邮箱请用格式'mailto:abc@def.com'</div>
                                         <div className="card bg-base-100 shadow-sm border border-base-200 p-2 rounded-2xl">
                                             <div className="space-y-2 p-2">
                                                 {(parsedConfig?.user?.sidebar?.social || []).map((item: any, index: number) => (
