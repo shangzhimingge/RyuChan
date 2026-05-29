@@ -19,6 +19,7 @@ const VARIANT_RATIO: Record<string, string> = {
 
 function PhotoImage({ photo }: { photo: Photo }) {
   const [error, setError] = useState(false)
+  const [loaded, setLoaded] = useState(false)
 
   if (error) {
     return (
@@ -33,13 +34,21 @@ function PhotoImage({ photo }: { photo: Photo }) {
   }
 
   return (
-    <img
-      src={photo.src}
-      alt={photo.title || ''}
-      className="absolute inset-0 w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500 ease-out"
-      loading="lazy"
-      onError={() => setError(true)}
-    />
+    <>
+      {!loaded && (
+        <div className="absolute inset-0 flex items-center justify-center bg-base-200/50 backdrop-blur-[2px] z-10">
+          <span className="loading loading-infinity w-10 text-primary/80"></span>
+        </div>
+      )}
+      <img
+        src={photo.src}
+        alt={photo.title || ''}
+        className={`absolute inset-0 w-full h-full object-cover transform group-hover:scale-105 transition-all duration-500 ease-out ${loaded ? 'opacity-100' : 'opacity-0'}`}
+        loading="lazy"
+        onLoad={() => setLoaded(true)}
+        onError={() => { setLoaded(true); setError(true) }}
+      />
+    </>
   )
 }
 

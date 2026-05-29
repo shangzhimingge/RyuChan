@@ -9,17 +9,17 @@ const id = Astro.url.searchParams.get("id") || "";
 const album = id ? albums.find((a) => a.id === id) : null;
 ---
 
-<BaseLayout title={album ? `${album.event} - 照片墙` : `照片墙`} description={album?.description}>
+<BaseLayout title={album ? album.event : `照片集`} description={album?.description}>
   <div class="mb-10 animate-fade-in-up">
     <div class="mb-4">
       <h1 class="text-3xl md:text-4xl font-bold flex items-center gap-3">
         <Icon name="lucide:camera" class="text-primary" />
-        <span id="photo-wall-title">{album ? `${album.icon || ''} ${album.event}` : '照片墙'}</span>
+        <span id="photo-wall-title">{album ? `${album.icon || ''} ${album.event}` : '照片集'}</span>
       </h1>
     </div>
 
     <p id="photo-wall-description" class="text-base-content/70 text-lg mb-6">
-      {album?.description || (id ? '照片集' : '请从相册页面选择相册查看')}
+      {album ? album.title : (id ? '照片集' : '请从相册页面选择相册查看')}
     </p>
 
     <PhotoWallGrid
@@ -36,8 +36,26 @@ const album = id ? albums.find((a) => a.id === id) : null;
 
 <script>
   import { Fancybox } from "@fancyapps/ui";
+  import { albums } from "../data/albums";
 
   let fancyboxInitialized = false;
+
+  function updatePageInfo() {
+    const params = new URLSearchParams(window.location.search);
+    const id = params.get("id");
+    if (!id) return;
+    
+    const album = albums.find((a) => a.id === id);
+    if (!album) return;
+
+    document.title = `${album.event} - 照片集`;
+
+    const titleEl = document.getElementById("photo-wall-title");
+    if (titleEl) titleEl.textContent = `${album.icon || ''} ${album.event}`.trim();
+
+    const descEl = document.getElementById("photo-wall-description");
+    if (descEl) descEl.textContent = album.title || '';
+  }
 
   function initFancybox() {
     if (fancyboxInitialized) return;
@@ -83,6 +101,7 @@ const album = id ? albums.find((a) => a.id === id) : null;
   }
 
   document.addEventListener("astro:page-load", () => {
+    updatePageInfo();
     fancyboxInitialized = false;
     let attempts = 0;
     const interval = setInterval(() => {

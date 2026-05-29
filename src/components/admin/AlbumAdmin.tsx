@@ -9,6 +9,7 @@ import {
 import { useAlbumStore } from '@/stores/album-store'
 import { useAuthStore } from '@/components/write/hooks/use-auth'
 import { detectVariant, detectVariantFromUrl } from '@/lib/photo-utils'
+import { readFileAsText } from '@/lib/file-utils'
 import { toast, Toaster } from 'sonner'
 import type { AlbumItem, Photo } from '@/data/albums'
 
@@ -30,8 +31,8 @@ function AdminThumbnail({ src, alt, onLoadDimensions }: { src: string, alt: stri
   return (
     <div className="w-[100px] h-[100px] rounded-lg overflow-hidden bg-base-300 shrink-0 my-[15px] relative">
       {!loaded && !error && (
-        <div className="absolute inset-0 flex items-center justify-center bg-base-300">
-          <Loader2 className="w-5 h-5 animate-spin text-base-content/30" />
+        <div className="absolute inset-0 flex items-center justify-center bg-base-200/50 backdrop-blur-[2px] z-10">
+          <span className="loading loading-infinity w-8 text-primary/80"></span>
         </div>
       )}
       {error && (
@@ -64,7 +65,7 @@ export default function AlbumAdmin() {
     deleteAlbum, addPendingPhoto,
   } = useAlbumStore()
 
-  const { isAuth } = useAuthStore()
+  const { isAuth, setPrivateKey } = useAuthStore()
 
   const [activeTab, setActiveTab] = useState<Tab>('info')
   const [isOpen, setIsOpen] = useState(false)
@@ -76,6 +77,7 @@ export default function AlbumAdmin() {
   const [urlInput, setUrlInput] = useState('')
   const [dragOver, setDragOver] = useState(false)
   const fileInputRef = useRef<HTMLInputElement>(null)
+  const keyInputRef = useRef<HTMLInputElement>(null)
 
   const album = albums.find((a) => a.id === adminAlbumId)
   const albumIndex = albums.findIndex((a) => a.id === adminAlbumId)
@@ -101,11 +103,22 @@ export default function AlbumAdmin() {
 
   const handleSaveAndSync = async () => {
     if (!isAuth) {
-      toast.error('请先在页面顶部导入 GitHub 密钥后再保存')
+      toast.error('请先导入密钥后再保存')
+      keyInputRef.current?.click()
       return
     }
     await saveAlbums()
     handleClose()
+  }
+
+  const onChoosePrivateKey = async (file: File) => {
+    try {
+      const pem = await readFileAsText(file)
+      setPrivateKey(pem)
+      toast.success('密钥导入成功')
+    } catch (e) {
+      toast.error('无法读取文件')
+    }
   }
 
   // Album field updaters
@@ -238,6 +251,17 @@ export default function AlbumAdmin() {
           className: 'shadow-xl rounded-2xl border-2 border-primary/20 backdrop-blur-sm',
           style: { fontSize: '1rem', padding: '14px 20px', borderRadius: '12px', boxShadow: '0 10px 40px rgba(0, 0, 0, 0.15)' },
           duration: 5000,
+        }}
+      />
+      <input
+        ref={keyInputRef}
+        type="file"
+        accept=".pem"
+        className="hidden"
+        onChange={async e => {
+          const f = e.target.files?.[0]
+          if (f) await onChoosePrivateKey(f)
+          if (e.currentTarget) e.currentTarget.value = ''
         }}
       />
       <AnimatePresence>
