@@ -6,12 +6,12 @@ RUN apk add --no-cache python3 g++ make
 ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
 ENV COREPACK_ENABLE_STRICT=0
-RUN corepack enable && corepack prepare pnpm@latest --activate
+RUN corepack enable && corepack prepare pnpm@9 --activate
 
 WORKDIR /app
 
 COPY package.json pnpm-lock.yaml ./
-RUN printf 'registry=https://registry.npmmirror.com\nonlyBuiltDependencies=["esbuild","sharp","swup","unrs-resolver","workerd","sass-embedded"]\n' > .npmrc && \
+RUN printf 'registry=https://registry.npmmirror.com\n' > .npmrc && \
     pnpm install --frozen-lockfile
 
 COPY . .
