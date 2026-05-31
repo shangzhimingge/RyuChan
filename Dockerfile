@@ -14,12 +14,7 @@ WORKDIR /app
 COPY package.json pnpm-lock.yaml ./
 RUN cat > .npmrc <<'RCFILE' && pnpm install --frozen-lockfile
 registry=https://registry.npmmirror.com
-onlyBuiltDependencies[]=esbuild
-onlyBuiltDependencies[]=sharp
-onlyBuiltDependencies[]=swup
-onlyBuiltDependencies[]=unrs-resolver
-onlyBuiltDependencies[]=workerd
-onlyBuiltDependencies[]=sass-embedded
+pnpm.onlyBuiltDependencies=esbuild sharp swup unrs-resolver workerd sass-embedded
 RCFILE
 
 COPY . .
