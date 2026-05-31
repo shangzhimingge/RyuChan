@@ -11,8 +11,7 @@ RUN corepack enable && corepack prepare pnpm@latest --activate
 WORKDIR /app
 
 COPY package.json pnpm-lock.yaml ./
-RUN node -e "var p=require('./package.json');p.pnpm={onlyBuiltDependencies:['esbuild','sharp','swup','unrs-resolver','workerd','sass-embedded']};require('fs').writeFileSync('package.json',JSON.stringify(p,null,2))" && \
-    pnpm config set registry https://registry.npmmirror.com && \
+RUN printf 'registry=https://registry.npmmirror.com\nonlyBuiltDependencies=["esbuild","sharp","swup","unrs-resolver","workerd","sass-embedded"]\n' > .npmrc && \
     pnpm install --frozen-lockfile
 
 COPY . .
