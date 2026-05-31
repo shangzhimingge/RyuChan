@@ -6,12 +6,13 @@ RUN apk add --no-cache python3 g++ make
 ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
 ENV COREPACK_ENABLE_STRICT=0
+ENV SHELL=/bin/sh
 RUN corepack enable && corepack prepare pnpm@latest --activate
 
 WORKDIR /app
 
 COPY package.json pnpm-lock.yaml .npmrc ./
-RUN pnpm setup && pnpm approve-builds --global esbuild sharp swup unrs-resolver workerd sass-embedded && pnpm install --frozen-lockfile
+RUN pnpm install --frozen-lockfile
 
 COPY . .
 
