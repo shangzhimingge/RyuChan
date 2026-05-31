@@ -1,4 +1,4 @@
-import { toBase64Utf8, getRef, createTree, createCommit, updateRef, createBlob, type TreeItem } from '@/lib/github-client'
+import { toBase64Utf8, getRef, createTree, createCommit, updateRef, createBlob, getCommit, type TreeItem } from '@/lib/github-client'
 import { fileToBase64NoPrefix, hashFileSHA256 } from '@/lib/file-utils'
 import { getAuthToken } from '@/lib/auth'
 import { GITHUB_CONFIG } from '@/consts'
@@ -28,6 +28,10 @@ export async function pushBlog(params: PushBlogParams): Promise<void> {
         toast.loading('📡 正在同步分支信息...', { id: toastId })
         const refData = await getRef(token, GITHUB_CONFIG.OWNER, GITHUB_CONFIG.REPO, `heads/${GITHUB_CONFIG.BRANCH}`)
         const latestCommitSha = refData.sha
+
+        // Get the tree SHA of the current commit (not the commit SHA itself)
+        const currentCommit = await getCommit(token, GITHUB_CONFIG.OWNER, GITHUB_CONFIG.REPO, latestCommitSha)
+        const baseTreeSha = currentCommit.tree.sha
 
         const commitMessage = mode === 'edit' ? `feat(blog): update post "${form.title}"` : `feat(blog): publish post "${form.title}"`
 
@@ -128,7 +132,7 @@ export async function pushBlog(params: PushBlogParams): Promise<void> {
         }
 
         toast.loading('🌳 正在构建文件树...', { id: toastId })
-        const treeData = await createTree(token, GITHUB_CONFIG.OWNER, GITHUB_CONFIG.REPO, treeItems, latestCommitSha)
+        const treeData = await createTree(token, GITHUB_CONFIG.OWNER, GITHUB_CONFIG.REPO, treeItems, baseTreeSha)
 
         toast.loading('💾 正在提交更改...', { id: toastId })
         const commitData = await createCommit(token, GITHUB_CONFIG.OWNER, GITHUB_CONFIG.REPO, commitMessage, treeData.sha, [latestCommitSha])
