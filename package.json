@@ -65,6 +65,16 @@
     "vfile": "^6.0.3",
     "zustand": "^5.0.9"
   },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "esbuild",
+      "sharp",
+      "swup",
+      "unrs-resolver",
+      "workerd",
+      "sass-embedded"
+    ]
+  },
   "devDependencies": {
     "@antfu/eslint-config": "^3.16.0",
     "@iconify-json/line-md": "^1.2.11",
