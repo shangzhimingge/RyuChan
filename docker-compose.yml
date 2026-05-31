@@ -1,0 +1,15 @@
+version: "3.9"
+
+services:
+  ryuchan:
+    build:
+      context: .
+      args:
+        PUBLIC_GITHUB_OWNER: ${PUBLIC_GITHUB_OWNER:-}
+        PUBLIC_GITHUB_REPO: ${PUBLIC_GITHUB_REPO:-}
+        PUBLIC_GITHUB_BRANCH: ${PUBLIC_GITHUB_BRANCH:-}
+        PUBLIC_GITHUB_APP_ID: ${PUBLIC_GITHUB_APP_ID:-}
+        PUBLIC_GITHUB_ENCRYPT_KEY: ${PUBLIC_GITHUB_ENCRYPT_KEY:-}
+    ports:
+      - "${PORT:-3575}:80"
+    restart: unless-stopped

@@ -1,0 +1,15 @@
+node_modules
+dist
+.git
+.gitignore
+.vscode
+wrangler.jsonc
+.wrangler
+.astro
+.env
+.env.*
+!.env.example
+*.md
+README.md
+LICENSE
+CLAUDE.md
