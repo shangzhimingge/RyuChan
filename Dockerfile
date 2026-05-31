@@ -11,9 +11,7 @@ RUN corepack enable && corepack prepare pnpm@latest --activate
 WORKDIR /app
 
 COPY package.json pnpm-lock.yaml .npmrc ./
-
-COPY .npmrc ./
-RUN pnpm approve-builds --global esbuild sharp swup unrs-resolver workerd sass-embedded && pnpm install --frozen-lockfile
+RUN pnpm setup && pnpm approve-builds --global esbuild sharp swup unrs-resolver workerd sass-embedded && pnpm install --frozen-lockfile
 
 COPY . .
 
