@@ -6,7 +6,7 @@ set -euo pipefail
 # Usage: ./deploy.sh [--run]
 # =============================================
 
-REPO_URL="${REPO_URL:-https://github.com/kobaridev/RyuChan.git}"
+REPO_URL="${REPO_URL:-https://github.com/shangzhimingge/RyuChan.git}"
 REPO_BRANCH="${REPO_BRANCH:-main}"
 PROJECT_DIR="${PROJECT_DIR:-/opt/ryuchan}"
 IMAGE_NAME="${IMAGE_NAME:-ryuchan}"
