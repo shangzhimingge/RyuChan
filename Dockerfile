@@ -10,7 +10,7 @@ RUN corepack enable && corepack prepare pnpm@latest --activate
 WORKDIR /app
 
 COPY package.json pnpm-lock.yaml .npmrc ./
-RUN pnpm install --frozen-lockfile
+RUN pnpm config set --location=project onlyBuiltDependencies '["esbuild","sharp","swup","unrs-resolver","workerd","sass-embedded"]' && pnpm install --frozen-lockfile
 
 COPY . .
 
