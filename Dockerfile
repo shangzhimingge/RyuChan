@@ -11,8 +11,7 @@ RUN corepack enable && corepack prepare pnpm@9 --activate
 WORKDIR /app
 
 COPY package.json pnpm-lock.yaml ./
-RUN printf 'registry=https://registry.npmmirror.com\n' > .npmrc && \
-    pnpm install --frozen-lockfile
+RUN printf 'registry=https://registry.npmmirror.com\n' > .npmrc && pnpm install --frozen-lockfile
 
 COPY . .
 
@@ -34,9 +33,7 @@ RUN pnpm build
 FROM nginx:alpine AS runtime
 
 RUN rm -rf /usr/share/nginx/html/*
-
 COPY --from=builder /app/dist /usr/share/nginx/html
-
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
 EXPOSE 80

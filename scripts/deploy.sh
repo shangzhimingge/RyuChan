@@ -36,6 +36,7 @@ fi
 # --- build ---
 echo "==> Building ${IMAGE_NAME}:${IMAGE_TAG} ..."
 docker build \
+  --no-cache \
   --build-arg PUBLIC_GITHUB_OWNER="${PUBLIC_GITHUB_OWNER:-}" \
   --build-arg PUBLIC_GITHUB_REPO="${PUBLIC_GITHUB_REPO:-}" \
   --build-arg PUBLIC_GITHUB_BRANCH="${PUBLIC_GITHUB_BRANCH:-}" \
