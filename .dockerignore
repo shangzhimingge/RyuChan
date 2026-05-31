@@ -9,6 +9,7 @@ wrangler.jsonc
 .env
 .env.*
 !.env.example
+!.npmrc
 *.md
 README.md
 LICENSE
