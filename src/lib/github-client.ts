@@ -24,6 +24,9 @@ export function toBase64Utf8(input: string): string {
 }
 
 export function signAppJwt(appId: string, privateKeyPem: string): string {
+	if (!appId || appId === '-' || !/^\d+$/.test(appId)) {
+		throw new Error(`无效的 GitHub App ID: "${appId}"。请在构建时设置 PUBLIC_GITHUB_APP_ID 环境变量为你的实际 App ID（数字）。`)
+	}
 	const now = Math.floor(Date.now() / 1000)
 	const header = { alg: 'RS256', typ: 'JWT' }
 	const payload = { iat: now - 60, exp: now + 8 * 60, iss: appId }

@@ -15,6 +15,13 @@ RUN printf 'registry=https://registry.npmmirror.com\n' > .npmrc && pnpm install 
 
 COPY . .
 
+# Required for online writing / config editing (GitHub App):
+#   PUBLIC_GITHUB_OWNER  — your GitHub username
+#   PUBLIC_GITHUB_REPO   — the repo name
+#   PUBLIC_GITHUB_BRANCH — branch to commit to
+#   PUBLIC_GITHUB_APP_ID — numeric GitHub App ID (NOT the app name!)
+# If unset, reading blog works but /write and /config will fail.
+
 ARG PUBLIC_GITHUB_OWNER
 ARG PUBLIC_GITHUB_REPO
 ARG PUBLIC_GITHUB_BRANCH

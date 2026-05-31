@@ -24,7 +24,7 @@ export const useAuthStore = create<AuthStore>((set, get) => ({
 
 	clearAuth: () => {
 		clearAllAuthCache()
-		set({ isAuth: false })
+		set({ isAuth: false, privateKey: null })
 	},
 
 	refreshAuthState: async () => {
