@@ -11,15 +11,16 @@ RUN corepack enable && corepack prepare pnpm@latest --activate
 
 WORKDIR /app
 
-COPY package.json pnpm-lock.yaml .npmrc ./
-RUN echo "registry=https://registry.npmmirror.com" >> .npmrc && \
-    echo "onlyBuiltDependencies[]=esbuild" >> .npmrc && \
-    echo "onlyBuiltDependencies[]=sharp" >> .npmrc && \
-    echo "onlyBuiltDependencies[]=swup" >> .npmrc && \
-    echo "onlyBuiltDependencies[]=unrs-resolver" >> .npmrc && \
-    echo "onlyBuiltDependencies[]=workerd" >> .npmrc && \
-    echo "onlyBuiltDependencies[]=sass-embedded" >> .npmrc && \
-    pnpm install --frozen-lockfile
+COPY package.json pnpm-lock.yaml ./
+RUN cat > .npmrc <<'RCFILE' && pnpm install --frozen-lockfile
+registry=https://registry.npmmirror.com
+onlyBuiltDependencies[]=esbuild
+onlyBuiltDependencies[]=sharp
+onlyBuiltDependencies[]=swup
+onlyBuiltDependencies[]=unrs-resolver
+onlyBuiltDependencies[]=workerd
+onlyBuiltDependencies[]=sass-embedded
+RCFILE
 
 COPY . .
 
