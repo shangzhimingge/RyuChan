@@ -112,9 +112,9 @@ github:
   encryptKey: wudishiduomejimo
 umami:
   enable: true
-  baseUrl: https://umami.131714.xyz
-  shareId: jToXL5Z3hnA1gKUw
-  websiteId: 3f9afc6c-f0bd-4734-be15-6d053960d34d
+  baseUrl: https://umami.endworld.cn
+  shareId: ePchdP0cJPsbBDlc
+  websiteId: c7a36037-44cb-424c-89c1-e237a203374f
   timezone: Asia/Shanghai
 user:
   name: 殇之冥歌
@@ -163,7 +163,7 @@ comments:
     emitMetadata: '0'
     loading: lazy
   waline:
-    serverURL: https://waline.131714.xyz
+    serverURL: https://waline.endworld.cn
     lang: zh
   twikoo:
     envId: https://twikoo.131714.xyz/
